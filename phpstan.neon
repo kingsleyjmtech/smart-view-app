@@ -1,0 +1,36 @@
+parameters:
+    level: 0 # Adjust to the desired strictness level (0-9)
+    paths:
+        - app/
+        - bootstrap/
+        - config/
+        - database/
+        - public/
+        - resources/
+        - routes/
+        - tests/
+    excludePaths:
+        - tests/_support/_generated/*  # Add paths you wish to exclude from analysis
+
+    # If you're using PHPStan's extensions or libraries
+    # includes:
+    #     - vendor/phpstan/phpstan-doctrine/extension.neon
+    #     - vendor/phpstan/phpstan-symfony/extension.neon
+
+    # PHPStan's default file extensions are ['php']. Add others if needed.
+    fileExtensions:
+        - php
+
+    # If you wish to ignore certain errors or patterns
+    ignoreErrors:
+        - '#Undefined variable: \$this#'
+        # - '#Call to an undefined static method App\\Models\\.+::insert\(\)\.#'
+        # - '#Call to an undefined static method App\\Models\\.+::findOrFail\(\)\.#'
+        # - '#Call to an undefined static method App\\Models\\.+::create\(\)\.#'
+
+    # PHP version (this should match the version you're developing with)
+    # phpVersion: 8000  # for PHP 8.0, adjust accordingly
+
+services:
+    # If you have custom rules or extensions
+    # App\PHPStan\MyCustomRule: ~
