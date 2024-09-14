@@ -1,9 +1,9 @@
 name: Build and Deploy to Development
 
 on:
-  push:
-    branches:
-      - development
+#  push:
+#    branches:
+#      - development
 
 jobs:
   build-deploy-dev:
