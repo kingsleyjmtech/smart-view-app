@@ -1,9 +1,9 @@
 name: Build and Deploy to Production
 
 on:
-  push:
-    branches:
-      - master
+#  push:
+#    branches:
+#      - master
 
 jobs:
   build-deploy-prod:
