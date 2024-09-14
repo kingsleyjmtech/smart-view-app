@@ -19,12 +19,12 @@ class AuthApiController extends Controller
     public function register(RegisterRequest $request)
     {
         return DB::transaction(function () use ($request) {
-            $user = User::create([
+            $user = User::query()->create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'timezone' => $request->timezone,
                 'password' => Hash::make($request->password),
-                'status' => $request->status,
+                'status' => 'Active',
             ]);
 
             event(new Registered($user));

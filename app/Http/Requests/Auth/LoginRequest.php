@@ -44,7 +44,7 @@ class LoginRequest extends FormRequest
      *
      * @throws ValidationException
      */
-    public function authenticate()
+    public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
 
@@ -66,7 +66,7 @@ class LoginRequest extends FormRequest
      *
      * @throws ValidationException
      */
-    public function ensureIsNotRateLimited()
+    public function ensureIsNotRateLimited(): void
     {
         if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
