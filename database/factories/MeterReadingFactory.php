@@ -16,6 +16,7 @@ class MeterReadingFactory extends Factory
             'meter_id' => Meter::factory(),
             'reading_date' => fake()->dateTime(),
             'value' => fake()->numberBetween(10, 10000),
+            'source' => fake()->sentence(),
         ];
     }
 }

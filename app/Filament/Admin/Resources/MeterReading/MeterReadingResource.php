@@ -40,6 +40,11 @@ class MeterReadingResource extends Resource
                     ->label('Value')
                     ->placeholder('Enter Value')
                     ->required(),
+                Forms\Components\TextInput::make('source')
+                    ->label('Source')
+                    ->placeholder('Enter Source')
+                    ->required()
+                    ->maxLength(255),
                 
             ])
             ->columns(1);
@@ -66,6 +71,11 @@ class MeterReadingResource extends Resource
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('value')
                     ->label('Value')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('source')
+                    ->label('Source')
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
@@ -161,6 +171,8 @@ class MeterReadingResource extends Resource
                    ->dateTime(),
                 Infolists\Components\TextEntry::make('value')
                     ->label('Value'),
+                Infolists\Components\TextEntry::make('source')
+                    ->label('Source'),
                 Infolists\Components\TextEntry::make('created_at')
                     ->label('Created At')
                     ->dateTime(),

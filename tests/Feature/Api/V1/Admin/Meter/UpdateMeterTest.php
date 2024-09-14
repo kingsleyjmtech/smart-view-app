@@ -5,6 +5,7 @@ use App\Models\Permission;
 use App\Models\Role;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Models\UtilityType;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 
@@ -31,6 +32,7 @@ it('should update meter', function () {
     $meterData = [
         'tenant_id' => Tenant::factory()->create()->id,
         'user_id' => User::factory()->create()->id,
+        'utility_type_id' => UtilityType::factory()->create()->id,
         'code' => trim(Str::substr(fake()->sentence(), 1, 255)),
         'location' => trim(Str::substr(fake()->sentence(), 1, 255)),
         'installation_date' => fake()->date(),
@@ -50,6 +52,7 @@ it('should not update meter if unauthorized', function () {
     $meterData = [
         'tenant_id' => Tenant::factory()->create()->id,
         'user_id' => User::factory()->create()->id,
+        'utility_type_id' => UtilityType::factory()->create()->id,
         'code' => trim(Str::substr(fake()->sentence(), 1, 255)),
         'location' => trim(Str::substr(fake()->sentence(), 1, 255)),
         'installation_date' => fake()->date(),
@@ -67,6 +70,7 @@ it('should not update meter if unauthenticated', function () {
     $meterData = [
         'tenant_id' => Tenant::factory()->create()->id,
         'user_id' => User::factory()->create()->id,
+        'utility_type_id' => UtilityType::factory()->create()->id,
         'code' => trim(Str::substr(fake()->sentence(), 1, 255)),
         'location' => trim(Str::substr(fake()->sentence(), 1, 255)),
         'installation_date' => fake()->date(),
@@ -91,6 +95,7 @@ it('should return validation errors when creating meter', function () {
     $response->assertStatus(422);
     $response->assertJsonValidationErrors([
         'tenant_id',
+        'utility_type_id',
         'code',
         'location',
         'status',

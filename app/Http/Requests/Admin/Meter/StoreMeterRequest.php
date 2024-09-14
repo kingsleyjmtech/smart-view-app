@@ -34,6 +34,11 @@ class StoreMeterRequest extends FormRequest
                 'exists:users,id',
                 'nullable'
             ],
+            'utility_type_id' => [
+                'integer',
+                'exists:utility_types,id',
+                'required'
+            ],
             'code' => [
                 'required',
                 'string',

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\Admin\Consumption\ConsumptionApiController;
 use App\Http\Controllers\Api\V1\Admin\Customer\CustomerApiController;
 use App\Http\Controllers\Api\V1\Admin\Meter\MeterApiController;
 use App\Http\Controllers\Api\V1\Admin\MeterReading\MeterReadingApiController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Api\V1\Admin\Role\RoleApiController;
 use App\Http\Controllers\Api\V1\Admin\Tariff\TariffApiController;
 use App\Http\Controllers\Api\V1\Admin\Tenant\TenantApiController;
 use App\Http\Controllers\Api\V1\Admin\User\UserApiController;
+use App\Http\Controllers\Api\V1\Admin\UtilityType\UtilityTypeApiController;
 use App\Http\Controllers\Api\V1\Auth\AuthApiController;
 use App\Http\Controllers\Api\V1\Auth\EmailVerificationController;
 use App\Http\Controllers\Api\V1\Auth\ForgotPasswordController;
@@ -65,6 +67,9 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum']
 });
 
 Route::group(['prefix' => 'v1/admin', 'as' => 'api.admin.', 'middleware' => ['auth:sanctum']], function () {
+    // Consumptions
+    Route::apiResource('consumptions', ConsumptionApiController::class);
+
     // Customers
     Route::apiResource('customers', CustomerApiController::class);
 
@@ -91,5 +96,8 @@ Route::group(['prefix' => 'v1/admin', 'as' => 'api.admin.', 'middleware' => ['au
 
     // Users
     Route::apiResource('users', UserApiController::class);
+
+    // Utility Types
+    Route::apiResource('utility-types', UtilityTypeApiController::class);
 
 });

@@ -36,6 +36,11 @@ class MeterResource extends Resource
                     ->relationship('user', 'email')
                     ->label('User')
                     ->placeholder('Select User'),
+                Forms\Components\Select::make('utility_type_id')
+                    ->relationship('utilityType', 'name')
+                    ->label('Utility Type')
+                    ->placeholder('Select Utility Type')
+                    ->required(),
                 Forms\Components\TextInput::make('code')
                     ->label('Code')
                     ->placeholder('Enter Code')
@@ -78,6 +83,11 @@ class MeterResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
+                Tables\Columns\TextColumn::make('utilityType.name')
+                    ->label('Utility Type')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('code')
                     ->label('Code')
                     ->searchable()
@@ -87,7 +97,7 @@ class MeterResource extends Resource
                     ->label('Location')
                     ->searchable()
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('installation_date')
                     ->label('Installation Date')
                     ->searchable()
@@ -187,6 +197,8 @@ class MeterResource extends Resource
                     ->label('Tenant'),
                 Infolists\Components\TextEntry::make('user.email')
                     ->label('User'),
+                Infolists\Components\TextEntry::make('utilityType.name')
+                    ->label('Utility Type'),
                 Infolists\Components\TextEntry::make('code')
                     ->label('Code'),
                 Infolists\Components\TextEntry::make('location')

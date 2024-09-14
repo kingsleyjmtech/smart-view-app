@@ -11,6 +11,21 @@ class PermissionsSeeder extends Seeder
     {
         $permissions = [
             [
+                'name' => 'consumption_create',
+            ],
+            [
+                'name' => 'consumption_edit',
+            ],
+            [
+                'name' => 'consumption_show',
+            ],
+            [
+                'name' => 'consumption_access',
+            ],
+            [
+                'name' => 'consumption_delete',
+            ],
+            [
                 'name' => 'customer_create',
             ],
             [
@@ -144,6 +159,21 @@ class PermissionsSeeder extends Seeder
             ],
             [
                 'name' => 'user_delete',
+            ],
+            [
+                'name' => 'utility_type_create',
+            ],
+            [
+                'name' => 'utility_type_edit',
+            ],
+            [
+                'name' => 'utility_type_show',
+            ],
+            [
+                'name' => 'utility_type_access',
+            ],
+            [
+                'name' => 'utility_type_delete',
             ]
         ];
 

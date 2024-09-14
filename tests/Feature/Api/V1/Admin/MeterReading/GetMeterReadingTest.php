@@ -35,6 +35,7 @@ it('should retrieve a single meter reading', function () {
         'meter_id' => $meterReading->meter_id,
         'reading_date' => $meterReading->reading_date->format('Y-m-d H:i:s'),
         'value' => $meterReading->value,
+        'source' => $meterReading->source,
         'created_at' => $meterReading->created_at,
         'updated_at' => $meterReading->updated_at,
         'deleted_at' => $meterReading->deleted_at,

@@ -34,6 +34,11 @@ class UpdateMeterReadingRequest extends FormRequest
             ],
             'value' => [
                 'required'
+            ],
+            'source' => [
+                'required',
+                'string',
+                'max:255'
             ]
         ];
     }

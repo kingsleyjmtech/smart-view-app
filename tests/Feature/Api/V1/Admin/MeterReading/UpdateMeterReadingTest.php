@@ -32,6 +32,7 @@ it('should update meter reading', function () {
         'meter_id' => Meter::factory()->create()->id,
         'reading_date' => fake()->dateTime()->format('Y-m-d H:i:s'),
         'value' => fake()->numberBetween(10, 10000),
+        'source' => trim(Str::substr(fake()->sentence(), 1, 255)),
     ];
 
     $response = $this->putJson("{$this->baseUrl}/$meterReading->id", $meterReadingData);
@@ -48,6 +49,7 @@ it('should not update meter reading if unauthorized', function () {
         'meter_id' => Meter::factory()->create()->id,
         'reading_date' => fake()->dateTime()->format('Y-m-d H:i:s'),
         'value' => fake()->numberBetween(10, 10000),
+        'source' => trim(Str::substr(fake()->sentence(), 1, 255)),
     ];
 
     $response = $this->putJson("{$this->baseUrl}/$meterReading->id", $meterReadingData);
@@ -62,6 +64,7 @@ it('should not update meter reading if unauthenticated', function () {
         'meter_id' => Meter::factory()->create()->id,
         'reading_date' => fake()->dateTime()->format('Y-m-d H:i:s'),
         'value' => fake()->numberBetween(10, 10000),
+        'source' => trim(Str::substr(fake()->sentence(), 1, 255)),
     ];
 
     $response = $this->putJson("{$this->baseUrl}/$meterReading->id", $meterReadingData);
@@ -84,6 +87,7 @@ it('should return validation errors when creating meter reading', function () {
         'meter_id',
         'reading_date',
         'value',
+        'source',
     ]);
 });
 

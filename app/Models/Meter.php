@@ -23,6 +23,7 @@ class Meter extends Model
     protected $fillable = [
         'tenant_id',
         'user_id',
+        'utility_type_id',
         'code',
         'location',
         'installation_date',
@@ -49,6 +50,11 @@ class Meter extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function utilityType(): BelongsTo
+    {
+        return $this->belongsTo(UtilityType::class);
+    }
+
     public function meterReadings(): HasMany
     {
         return $this->hasMany(MeterReading::class);
@@ -57,5 +63,10 @@ class Meter extends Model
     public function meterTariffs(): HasMany
     {
         return $this->hasMany(MeterTariff::class);
+    }
+
+    public function consumptions(): HasMany
+    {
+        return $this->hasMany(Consumption::class);
     }
 }

@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Meter;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Models\UtilityType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MeterFactory extends Factory
@@ -16,6 +17,7 @@ class MeterFactory extends Factory
         return [
             'tenant_id' => Tenant::factory(),
             'user_id' => User::factory(),
+            'utility_type_id' => UtilityType::factory(),
             'code' => fake()->sentence(),
             'location' => fake()->sentence(),
             'installation_date' => fake()->date(),

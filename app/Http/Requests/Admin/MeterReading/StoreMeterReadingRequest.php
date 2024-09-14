@@ -34,6 +34,11 @@ class StoreMeterReadingRequest extends FormRequest
             ],
             'value' => [
                 'required'
+            ],
+            'source' => [
+                'required',
+                'string',
+                'max:255'
             ]
         ];
     }

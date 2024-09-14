@@ -36,6 +36,7 @@ it('should retrieve a list of meters', function () {
             'id' => $meter->id,
             'tenant_id' => $meter->tenant_id,
             'user_id' => $meter->user_id,
+            'utility_type_id' => $meter->utility_type_id,
             'code' => $meter->code,
             'location' => $meter->location,
             'installation_date' => $meter->installation_date,

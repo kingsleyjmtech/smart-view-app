@@ -17,7 +17,8 @@ class MeterReading extends Model
     protected $fillable = [
         'meter_id',
         'reading_date',
-        'value'
+        'value',
+        'source'
     ];
     
     protected $casts = [
