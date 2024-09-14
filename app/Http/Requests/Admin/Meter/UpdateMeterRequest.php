@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Admin\Meter;
 
-use App\Models\Meter;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
@@ -10,8 +9,8 @@ class UpdateMeterRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        abort_if(            
-            !auth()->user()->hasPermission('meter_edit'),
+        abort_if(
+            ! auth()->user()->hasPermission('meter_edit'),
             response()->json(
                 ['message' => 'This action is unauthorized.'],
                 ResponseAlias::HTTP_FORBIDDEN
@@ -19,7 +18,7 @@ class UpdateMeterRequest extends FormRequest
         );
 
         return true;
-     }
+    }
 
     public function rules(): array
     {
@@ -27,34 +26,34 @@ class UpdateMeterRequest extends FormRequest
             'tenant_id' => [
                 'integer',
                 'exists:tenants,id',
-                'required'
+                'required',
             ],
             'user_id' => [
                 'integer',
                 'exists:users,id',
-                'nullable'
+                'nullable',
             ],
             'utility_type_id' => [
                 'integer',
                 'exists:utility_types,id',
-                'required'
+                'required',
             ],
             'code' => [
                 'required',
                 'string',
-                'max:255'
+                'max:255',
             ],
             'location' => [
                 'required',
                 'string',
-                'max:255'
+                'max:255',
             ],
             'installation_date' => [
-                'nullable'
+                'nullable',
             ],
             'status' => [
-                'required'
-            ]
+                'required',
+            ],
         ];
     }
 }

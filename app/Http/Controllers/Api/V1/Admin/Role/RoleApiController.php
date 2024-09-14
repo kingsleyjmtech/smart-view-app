@@ -14,7 +14,7 @@ class RoleApiController extends Controller
     public function index()
     {
         abort_if(
-            !auth()->user()->hasPermission('role_access'),
+            ! auth()->user()->hasPermission('role_access'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -33,7 +33,7 @@ class RoleApiController extends Controller
     public function show(Role $role)
     {
         abort_if(
-            !auth()->user()->hasPermission('role_show'),
+            ! auth()->user()->hasPermission('role_show'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -52,7 +52,7 @@ class RoleApiController extends Controller
     public function destroy(Role $role)
     {
         abort_if(
-            !auth()->user()->hasPermission('role_delete'),
+            ! auth()->user()->hasPermission('role_delete'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 

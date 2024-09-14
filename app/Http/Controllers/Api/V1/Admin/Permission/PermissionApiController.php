@@ -14,7 +14,7 @@ class PermissionApiController extends Controller
     public function index()
     {
         abort_if(
-            !auth()->user()->hasPermission('permission_access'),
+            ! auth()->user()->hasPermission('permission_access'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -33,7 +33,7 @@ class PermissionApiController extends Controller
     public function show(Permission $permission)
     {
         abort_if(
-            !auth()->user()->hasPermission('permission_show'),
+            ! auth()->user()->hasPermission('permission_show'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -52,7 +52,7 @@ class PermissionApiController extends Controller
     public function destroy(Permission $permission)
     {
         abort_if(
-            !auth()->user()->hasPermission('permission_delete'),
+            ! auth()->user()->hasPermission('permission_delete'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 

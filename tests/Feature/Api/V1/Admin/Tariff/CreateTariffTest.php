@@ -2,7 +2,6 @@
 
 use App\Models\Permission;
 use App\Models\Role;
-use App\Models\Tariff;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
@@ -13,14 +12,14 @@ beforeEach(function () {
     $this->baseUrl = 'api/v1/admin/tariffs';
     $this->adminRole = Role::factory()->create(['name' => 'Admin']);
     $this->userRole = Role::factory()->create(['name' => 'User']);
-    
+
     $this->permission = Permission::factory()->create(['name' => 'tariff_create']);
-    
+
     $this->adminRole->permissions()->sync([$this->permission->id]);
-        
+
     $this->adminUser = User::factory()->create();
     $this->user = User::factory()->create();
-    
+
     $this->adminUser->roles()->sync([$this->adminRole->id]);
 });
 

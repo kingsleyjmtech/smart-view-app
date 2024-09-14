@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Admin\Consumption;
 
-use App\Models\Consumption;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
@@ -11,7 +10,7 @@ class StoreConsumptionRequest extends FormRequest
     public function authorize(): bool
     {
         abort_if(
-            !auth()->user()->hasPermission('consumption_create'),
+            ! auth()->user()->hasPermission('consumption_create'),
             response()->json(
                 ['message' => 'This action is unauthorized.'],
                 ResponseAlias::HTTP_FORBIDDEN
@@ -19,7 +18,7 @@ class StoreConsumptionRequest extends FormRequest
         );
 
         return true;
-     }
+    }
 
     public function rules(): array
     {
@@ -27,17 +26,17 @@ class StoreConsumptionRequest extends FormRequest
             'meter_id' => [
                 'integer',
                 'exists:meters,id',
-                'required'
+                'required',
             ],
             'aggregation_period' => [
-                'nullable'
+                'nullable',
             ],
             'value' => [
-                'required'
+                'required',
             ],
             'date' => [
-                'required'
-            ]
+                'required',
+            ],
         ];
     }
 }

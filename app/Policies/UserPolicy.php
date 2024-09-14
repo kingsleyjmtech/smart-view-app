@@ -2,8 +2,6 @@
 
 namespace App\Policies;
 
-use Symfony\Component\HttpFoundation\Response;
-
 class UserPolicy
 {
     /**

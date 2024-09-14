@@ -14,7 +14,7 @@ class ConsumptionApiController extends Controller
     public function index()
     {
         abort_if(
-            !auth()->user()->hasPermission('consumption_access'),
+            ! auth()->user()->hasPermission('consumption_access'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -33,7 +33,7 @@ class ConsumptionApiController extends Controller
     public function show(Consumption $consumption)
     {
         abort_if(
-            !auth()->user()->hasPermission('consumption_show'),
+            ! auth()->user()->hasPermission('consumption_show'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -52,7 +52,7 @@ class ConsumptionApiController extends Controller
     public function destroy(Consumption $consumption)
     {
         abort_if(
-            !auth()->user()->hasPermission('consumption_delete'),
+            ! auth()->user()->hasPermission('consumption_delete'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 

@@ -174,7 +174,7 @@ class PermissionsSeeder extends Seeder
             ],
             [
                 'name' => 'utility_type_delete',
-            ]
+            ],
         ];
 
         foreach ($permissions as $permission) {

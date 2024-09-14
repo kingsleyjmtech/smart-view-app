@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Admin\MeterReading;
 
-use App\Models\MeterReading;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
@@ -11,7 +10,7 @@ class StoreMeterReadingRequest extends FormRequest
     public function authorize(): bool
     {
         abort_if(
-            !auth()->user()->hasPermission('meter_reading_create'),
+            ! auth()->user()->hasPermission('meter_reading_create'),
             response()->json(
                 ['message' => 'This action is unauthorized.'],
                 ResponseAlias::HTTP_FORBIDDEN
@@ -19,7 +18,7 @@ class StoreMeterReadingRequest extends FormRequest
         );
 
         return true;
-     }
+    }
 
     public function rules(): array
     {
@@ -27,19 +26,19 @@ class StoreMeterReadingRequest extends FormRequest
             'meter_id' => [
                 'integer',
                 'exists:meters,id',
-                'required'
+                'required',
             ],
             'reading_date' => [
-                'required'
+                'required',
             ],
             'value' => [
-                'required'
+                'required',
             ],
             'source' => [
                 'required',
                 'string',
-                'max:255'
-            ]
+                'max:255',
+            ],
         ];
     }
 }

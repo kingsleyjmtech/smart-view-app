@@ -23,7 +23,7 @@ class AuthApiController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'timezone' => $request->timezone,
-                'password' => Hash::make($request->password)
+                'password' => Hash::make($request->password),
             ]);
 
             event(new Registered($user));
@@ -41,7 +41,7 @@ class AuthApiController extends Controller
             return response($response, ResponseAlias::HTTP_OK);
         }, 5);
     }
-    
+
     public function login(LoginRequest $request)
     {
         $request->authenticate();
@@ -60,7 +60,7 @@ class AuthApiController extends Controller
 
         return response($response, ResponseAlias::HTTP_OK);
     }
-    
+
     public function logout()
     {
         auth()->user()->currentAccessToken()->delete();
@@ -93,7 +93,7 @@ class AuthApiController extends Controller
             'message' => 'Logged Out Session Successfully!',
         ], ResponseAlias::HTTP_OK);
     }
-    
+
     public function changePassword(ChangePasswordRequest $changePasswordRequest)
     {
         User::find(auth()->user()->id)->update(['password' => Hash::make($changePasswordRequest->new_password)]);
@@ -110,18 +110,18 @@ class AuthApiController extends Controller
 
         return new MyDetailsResource($user);
     }
-    
+
     public function updateMyDetails(UpdateMyDetailsRequest $request)
     {
         return DB::transaction(function () use ($request) {
             /* @var User $user */
             $user = auth()->user();
-            
+
             $user->update([
                 'name' => $request->name,
                 'email' => $request->email,
                 'timezone' => $request->timezone,
-                'password' => Hash::make($request->password)
+                'password' => Hash::make($request->password),
             ]);
 
             return new MyDetailsResource($user);

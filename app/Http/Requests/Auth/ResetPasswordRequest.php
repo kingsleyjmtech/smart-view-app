@@ -25,7 +25,7 @@ class ResetPasswordRequest extends FormRequest
             'password' => [
                 'required',
                 'confirmed',
-                 RulesPassword::defaults()
+                RulesPassword::defaults(),
             ],
         ];
     }

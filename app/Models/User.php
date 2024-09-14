@@ -6,47 +6,47 @@ use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
+    use HasApiTokens;
     use HasFactory;
     use Notifiable;
-    use HasApiTokens;
     use SoftDeletes;
-    
+
     public $table = 'users';
-    
+
     protected $fillable = [
         'name',
         'email',
         'timezone',
         'email_verified_at',
         'password',
-        'remember_token'
+        'remember_token',
     ];
 
     protected $hidden = [
         'password',
-        'remember_token'
+        'remember_token',
     ];
-    
+
     protected $casts = [
-        
+
     ];
-    
+
     protected $dates = [
         'email_verified_at',
         'created_at',
         'updated_at',
-        'deleted_at'
-    ];    
-    
+        'deleted_at',
+    ];
+
     public function hasPermission(string $permissionName): bool
     {
         foreach ($this->roles as $role) {
@@ -56,10 +56,10 @@ class User extends Authenticatable implements MustVerifyEmail
                 }
             }
         }
-        
+
         return false;
     }
-    
+
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
@@ -79,7 +79,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Meter::class);
     }
-  
+
     public function sendEmailVerificationNotification(): void
     {
         $verifyUrl = config('app.frontend_url').'/auth/verify-email?'.http_build_query([
@@ -95,7 +95,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
         $this->notify($verifyEmail);
     }
-  
+
     public function sendPasswordResetNotification($token): void
     {
         $url = config('app.frontend_url').'/auth/reset-password?token='.$token.'&email='.urlencode($this->email);

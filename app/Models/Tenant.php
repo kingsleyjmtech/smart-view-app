@@ -12,25 +12,25 @@ class Tenant extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
+
     public $table = 'tenants';
-    
+
     protected $fillable = [
         'customer_id',
         'user_id',
-        'uuid'
+        'uuid',
     ];
-    
+
     protected $casts = [
-        
+
     ];
-    
+
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
-    ];    
-    
+        'deleted_at',
+    ];
+
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);

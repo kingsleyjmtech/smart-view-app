@@ -14,7 +14,6 @@ use App\Http\Controllers\Api\V1\Admin\UtilityType\UtilityTypeApiController;
 use App\Http\Controllers\Api\V1\Auth\AuthApiController;
 use App\Http\Controllers\Api\V1\Auth\EmailVerificationController;
 use App\Http\Controllers\Api\V1\Auth\ForgotPasswordController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
@@ -23,17 +22,17 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
 
     // Login
     Route::post('/login', [AuthApiController::class, 'login']);
-    
+
     // Forgot Password
     Route::post('forgot-password', [ForgotPasswordController::class, 'forgotPassword']);
-    
+
     // Reset Password
     Route::post('reset-password', [ForgotPasswordController::class, 'reset']);
 
     // Verify Email
     Route::get('verify/email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify');
     Route::post('verify/email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify');
-    
+
     // Get Ping Route
     Route::get('/ping', function () {
         return response()->json(['message' => 'pong']);

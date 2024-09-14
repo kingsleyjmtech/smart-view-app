@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Admin\MeterTariff;
 
-use App\Models\MeterTariff;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
@@ -10,8 +9,8 @@ class UpdateMeterTariffRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        abort_if(            
-            !auth()->user()->hasPermission('meter_tariff_edit'),
+        abort_if(
+            ! auth()->user()->hasPermission('meter_tariff_edit'),
             response()->json(
                 ['message' => 'This action is unauthorized.'],
                 ResponseAlias::HTTP_FORBIDDEN
@@ -19,7 +18,7 @@ class UpdateMeterTariffRequest extends FormRequest
         );
 
         return true;
-     }
+    }
 
     public function rules(): array
     {
@@ -27,19 +26,19 @@ class UpdateMeterTariffRequest extends FormRequest
             'meter_id' => [
                 'integer',
                 'exists:meters,id',
-                'required'
+                'required',
             ],
             'tariff_id' => [
                 'integer',
                 'exists:tariffs,id',
-                'required'
+                'required',
             ],
             'effective_from' => [
-                'required'
+                'required',
             ],
             'effective_to' => [
-                'nullable'
-            ]
+                'nullable',
+            ],
         ];
     }
 }

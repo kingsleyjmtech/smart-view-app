@@ -14,7 +14,7 @@ class TenantApiController extends Controller
     public function index()
     {
         abort_if(
-            !auth()->user()->hasPermission('tenant_access'),
+            ! auth()->user()->hasPermission('tenant_access'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -33,7 +33,7 @@ class TenantApiController extends Controller
     public function show(Tenant $tenant)
     {
         abort_if(
-            !auth()->user()->hasPermission('tenant_show'),
+            ! auth()->user()->hasPermission('tenant_show'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -52,7 +52,7 @@ class TenantApiController extends Controller
     public function destroy(Tenant $tenant)
     {
         abort_if(
-            !auth()->user()->hasPermission('tenant_delete'),
+            ! auth()->user()->hasPermission('tenant_delete'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 

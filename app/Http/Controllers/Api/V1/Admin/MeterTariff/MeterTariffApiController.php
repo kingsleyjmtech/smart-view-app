@@ -14,7 +14,7 @@ class MeterTariffApiController extends Controller
     public function index()
     {
         abort_if(
-            !auth()->user()->hasPermission('meter_tariff_access'),
+            ! auth()->user()->hasPermission('meter_tariff_access'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -33,7 +33,7 @@ class MeterTariffApiController extends Controller
     public function show(MeterTariff $meterTariff)
     {
         abort_if(
-            !auth()->user()->hasPermission('meter_tariff_show'),
+            ! auth()->user()->hasPermission('meter_tariff_show'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -52,7 +52,7 @@ class MeterTariffApiController extends Controller
     public function destroy(MeterTariff $meterTariff)
     {
         abort_if(
-            !auth()->user()->hasPermission('meter_tariff_delete'),
+            ! auth()->user()->hasPermission('meter_tariff_delete'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 

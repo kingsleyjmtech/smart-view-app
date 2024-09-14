@@ -12,24 +12,24 @@ class Customer extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
+
     public $table = 'customers';
-    
+
     protected $fillable = [
         'user_id',
-        'name'
+        'name',
     ];
-    
+
     protected $casts = [
-        
+
     ];
-    
+
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
-    ];    
-    
+        'deleted_at',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

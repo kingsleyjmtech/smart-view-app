@@ -17,24 +17,24 @@ class UpdateMyDetailsRequest extends FormRequest
             'name' => [
                 'required',
                 'string',
-                'max:255'
+                'max:255',
             ],
             'email' => [
                 'required',
                 'string',
                 'email',
-                'max:255'
+                'max:255',
             ],
             'timezone' => [
                 'nullable',
                 'string',
-                'max:255'
+                'max:255',
             ],
             'password' => [
                 'required',
                 'string',
-                'max:255'
-            ]
+                'max:255',
+            ],
         ];
     }
 }

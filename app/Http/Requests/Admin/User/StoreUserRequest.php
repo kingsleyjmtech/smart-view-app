@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Admin\User;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
@@ -11,7 +10,7 @@ class StoreUserRequest extends FormRequest
     public function authorize(): bool
     {
         abort_if(
-            !auth()->user()->hasPermission('user_create'),
+            ! auth()->user()->hasPermission('user_create'),
             response()->json(
                 ['message' => 'This action is unauthorized.'],
                 ResponseAlias::HTTP_FORBIDDEN
@@ -19,48 +18,48 @@ class StoreUserRequest extends FormRequest
         );
 
         return true;
-     }
+    }
 
     public function rules(): array
     {
         return [
             'roles' => [
                 'required',
-                'array'
+                'array',
             ],
             'roles.*.id' => [
                 'integer',
-                'exists:roles,id'
+                'exists:roles,id',
             ],
             'name' => [
                 'required',
                 'string',
-                'max:255'
+                'max:255',
             ],
             'email' => [
                 'required',
                 'string',
                 'email',
-                'max:255'
+                'max:255',
             ],
             'timezone' => [
                 'nullable',
                 'string',
-                'max:255'
+                'max:255',
             ],
             'email_verified_at' => [
-                'nullable'
+                'nullable',
             ],
             'password' => [
                 'required',
                 'string',
-                'max:255'
+                'max:255',
             ],
             'remember_token' => [
                 'nullable',
                 'string',
-                'max:255'
-            ]
+                'max:255',
+            ],
         ];
     }
 }

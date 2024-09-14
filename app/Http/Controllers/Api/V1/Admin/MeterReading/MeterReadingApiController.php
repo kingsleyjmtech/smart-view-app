@@ -14,7 +14,7 @@ class MeterReadingApiController extends Controller
     public function index()
     {
         abort_if(
-            !auth()->user()->hasPermission('meter_reading_access'),
+            ! auth()->user()->hasPermission('meter_reading_access'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -33,7 +33,7 @@ class MeterReadingApiController extends Controller
     public function show(MeterReading $meterReading)
     {
         abort_if(
-            !auth()->user()->hasPermission('meter_reading_show'),
+            ! auth()->user()->hasPermission('meter_reading_show'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -52,7 +52,7 @@ class MeterReadingApiController extends Controller
     public function destroy(MeterReading $meterReading)
     {
         abort_if(
-            !auth()->user()->hasPermission('meter_reading_delete'),
+            ! auth()->user()->hasPermission('meter_reading_delete'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 

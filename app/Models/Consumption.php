@@ -18,29 +18,29 @@ class Consumption extends Model
         'Weekly' => 'Weekly',
         'Monthly' => 'Monthly',
         'Quarterly' => 'Quarterly',
-        'Yearly' => 'Yearly'
+        'Yearly' => 'Yearly',
     ];
-    
+
     public $table = 'consumptions';
-    
+
     protected $fillable = [
         'meter_id',
         'aggregation_period',
         'value',
-        'date'
+        'date',
     ];
-    
+
     protected $casts = [
-        
+
     ];
-    
+
     protected $dates = [
         'date',
         'created_at',
         'updated_at',
-        'deleted_at'
-    ];    
-    
+        'deleted_at',
+    ];
+
     public function meter(): BelongsTo
     {
         return $this->belongsTo(Meter::class);

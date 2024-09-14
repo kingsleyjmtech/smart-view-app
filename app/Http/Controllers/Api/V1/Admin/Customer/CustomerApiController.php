@@ -14,7 +14,7 @@ class CustomerApiController extends Controller
     public function index()
     {
         abort_if(
-            !auth()->user()->hasPermission('customer_access'),
+            ! auth()->user()->hasPermission('customer_access'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -33,7 +33,7 @@ class CustomerApiController extends Controller
     public function show(Customer $customer)
     {
         abort_if(
-            !auth()->user()->hasPermission('customer_show'),
+            ! auth()->user()->hasPermission('customer_show'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -52,7 +52,7 @@ class CustomerApiController extends Controller
     public function destroy(Customer $customer)
     {
         abort_if(
-            !auth()->user()->hasPermission('customer_delete'),
+            ! auth()->user()->hasPermission('customer_delete'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 

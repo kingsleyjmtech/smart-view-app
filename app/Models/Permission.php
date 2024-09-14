@@ -11,23 +11,23 @@ class Permission extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
+
     public $table = 'permissions';
-    
+
     protected $fillable = [
-        'name'
+        'name',
     ];
-    
+
     protected $casts = [
-        
+
     ];
-    
+
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
-    ];    
-    
+        'deleted_at',
+    ];
+
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);

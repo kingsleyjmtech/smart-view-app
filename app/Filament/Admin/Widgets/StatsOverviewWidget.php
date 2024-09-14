@@ -4,9 +4,9 @@ namespace App\Filament\Admin\Widgets;
 
 use App\Filament\Admin\Resources\Consumption\ConsumptionResource;
 use App\Filament\Admin\Resources\Customer\CustomerResource;
+use App\Filament\Admin\Resources\Meter\MeterResource;
 use App\Filament\Admin\Resources\MeterReading\MeterReadingResource;
 use App\Filament\Admin\Resources\MeterTariff\MeterTariffResource;
-use App\Filament\Admin\Resources\Meter\MeterResource;
 use App\Filament\Admin\Resources\Permission\PermissionResource;
 use App\Filament\Admin\Resources\Role\RoleResource;
 use App\Filament\Admin\Resources\Tariff\TariffResource;
@@ -33,7 +33,7 @@ class StatsOverviewWidget extends BaseWidget
             Stat::make('Total Tariffs', TariffResource::getEloquentQuery()->count()),
             Stat::make('Total Tenants', TenantResource::getEloquentQuery()->count()),
             Stat::make('Total Users', UserResource::getEloquentQuery()->count()),
-            Stat::make('Total Utility Types', UtilityTypeResource::getEloquentQuery()->count())
+            Stat::make('Total Utility Types', UtilityTypeResource::getEloquentQuery()->count()),
         ];
     }
 }

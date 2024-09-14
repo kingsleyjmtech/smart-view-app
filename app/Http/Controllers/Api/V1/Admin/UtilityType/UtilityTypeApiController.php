@@ -14,7 +14,7 @@ class UtilityTypeApiController extends Controller
     public function index()
     {
         abort_if(
-            !auth()->user()->hasPermission('utility_type_access'),
+            ! auth()->user()->hasPermission('utility_type_access'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -33,7 +33,7 @@ class UtilityTypeApiController extends Controller
     public function show(UtilityType $utilityType)
     {
         abort_if(
-            !auth()->user()->hasPermission('utility_type_show'),
+            ! auth()->user()->hasPermission('utility_type_show'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -52,7 +52,7 @@ class UtilityTypeApiController extends Controller
     public function destroy(UtilityType $utilityType)
     {
         abort_if(
-            !auth()->user()->hasPermission('utility_type_delete'),
+            ! auth()->user()->hasPermission('utility_type_delete'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 

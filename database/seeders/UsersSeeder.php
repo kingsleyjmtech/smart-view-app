@@ -17,7 +17,7 @@ class UsersSeeder extends Seeder
                 'timezone' => '',
                 'email_verified_at' => now(),
                 'password' => bcrypt('password'),
-                'remember_token' => ''
+                'remember_token' => '',
             ],
         ];
 

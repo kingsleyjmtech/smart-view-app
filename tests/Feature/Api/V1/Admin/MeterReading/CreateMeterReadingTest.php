@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Meter;
-use App\Models\MeterReading;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
@@ -14,14 +13,14 @@ beforeEach(function () {
     $this->baseUrl = 'api/v1/admin/meter-readings';
     $this->adminRole = Role::factory()->create(['name' => 'Admin']);
     $this->userRole = Role::factory()->create(['name' => 'User']);
-    
+
     $this->permission = Permission::factory()->create(['name' => 'meter_reading_create']);
-    
+
     $this->adminRole->permissions()->sync([$this->permission->id]);
-        
+
     $this->adminUser = User::factory()->create();
     $this->user = User::factory()->create();
-    
+
     $this->adminUser->roles()->sync([$this->adminRole->id]);
 });
 

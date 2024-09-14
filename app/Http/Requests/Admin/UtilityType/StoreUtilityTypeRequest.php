@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Admin\UtilityType;
 
-use App\Models\UtilityType;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
@@ -11,7 +10,7 @@ class StoreUtilityTypeRequest extends FormRequest
     public function authorize(): bool
     {
         abort_if(
-            !auth()->user()->hasPermission('utility_type_create'),
+            ! auth()->user()->hasPermission('utility_type_create'),
             response()->json(
                 ['message' => 'This action is unauthorized.'],
                 ResponseAlias::HTTP_FORBIDDEN
@@ -19,7 +18,7 @@ class StoreUtilityTypeRequest extends FormRequest
         );
 
         return true;
-     }
+    }
 
     public function rules(): array
     {
@@ -28,12 +27,12 @@ class StoreUtilityTypeRequest extends FormRequest
                 'required',
                 'string',
                 'min:2',
-                'max:100'
+                'max:100',
             ],
             'description' => [
                 'nullable',
-                'string'
-            ]
+                'string',
+            ],
         ];
     }
 }

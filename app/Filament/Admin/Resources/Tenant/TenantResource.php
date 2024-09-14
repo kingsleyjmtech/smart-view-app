@@ -16,9 +16,9 @@ use Illuminate\Support\Carbon;
 class TenantResource extends Resource
 {
     protected static ?string $model = Tenant::class;
-    
+
     protected static ?string $slug = 'tenants';
-    
+
     protected static ?string $navigationGroup = 'Meters';
 
     protected static ?string $navigationIcon = 'heroicon-o-folder';
@@ -81,7 +81,7 @@ class TenantResource extends Resource
                 Tables\Filters\Filter::make('created_at')
                     ->form([
                         Forms\Components\DatePicker::make('created_from')
-                            ->placeholder(fn ($state): string => 'Feb 17, ' . now()->subYear()->format('Y')),
+                            ->placeholder(fn ($state): string => 'Feb 17, '.now()->subYear()->format('Y')),
                         Forms\Components\DatePicker::make('created_until')
                             ->placeholder(fn ($state): string => now()->format('M d, Y')),
                     ])
@@ -99,10 +99,10 @@ class TenantResource extends Resource
                     ->indicateUsing(function (array $data): array {
                         $indicators = [];
                         if ($data['created_from'] ?? null) {
-                            $indicators['created_from'] = 'Order from ' . Carbon::parse($data['created_from'])->toFormattedDateString();
+                            $indicators['created_from'] = 'Order from '.Carbon::parse($data['created_from'])->toFormattedDateString();
                         }
                         if ($data['created_until'] ?? null) {
-                            $indicators['created_until'] = 'Order until ' . Carbon::parse($data['created_until'])->toFormattedDateString();
+                            $indicators['created_until'] = 'Order until '.Carbon::parse($data['created_until'])->toFormattedDateString();
                         }
 
                         return $indicators;
@@ -110,7 +110,7 @@ class TenantResource extends Resource
                 Tables\Filters\Filter::make('updated_at')
                     ->form([
                         Forms\Components\DatePicker::make('updated_from')
-                            ->placeholder(fn ($state): string => 'Feb 17, ' . now()->subYear()->format('Y')),
+                            ->placeholder(fn ($state): string => 'Feb 17, '.now()->subYear()->format('Y')),
                         Forms\Components\DatePicker::make('updated_until')
                             ->placeholder(fn ($state): string => now()->format('M d, Y')),
                     ])
@@ -128,10 +128,10 @@ class TenantResource extends Resource
                     ->indicateUsing(function (array $data): array {
                         $indicators = [];
                         if ($data['updated_from'] ?? null) {
-                            $indicators['updated_from'] = 'Order from ' . Carbon::parse($data['updated_from'])->toFormattedDateString();
+                            $indicators['updated_from'] = 'Order from '.Carbon::parse($data['updated_from'])->toFormattedDateString();
                         }
                         if ($data['updated_until'] ?? null) {
-                            $indicators['updated_until'] = 'Order until ' . Carbon::parse($data['updated_until'])->toFormattedDateString();
+                            $indicators['updated_until'] = 'Order until '.Carbon::parse($data['updated_until'])->toFormattedDateString();
                         }
 
                         return $indicators;
@@ -145,7 +145,7 @@ class TenantResource extends Resource
                 Tables\Actions\DeleteAction::make(),
             ]);
     }
-    
+
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist
@@ -161,12 +161,12 @@ class TenantResource extends Resource
                     ->dateTime(),
                 Infolists\Components\TextEntry::make('updated_at')
                     ->label('Updated At')
-                    ->dateTime()
+                    ->dateTime(),
             ])
             ->columns(1)
             ->inlineLabel();
     }
-    
+
     public static function getPages(): array
     {
         return [

@@ -16,9 +16,9 @@ use Illuminate\Support\Carbon;
 class PermissionResource extends Resource
 {
     protected static ?string $model = Permission::class;
-    
+
     protected static ?string $slug = 'permissions';
-    
+
     protected static ?string $navigationGroup = 'Users';
 
     protected static ?string $navigationIcon = 'heroicon-o-shield-check';
@@ -32,7 +32,7 @@ class PermissionResource extends Resource
                     ->placeholder('Enter Name')
                     ->required()
                     ->maxLength(255),
-                
+
             ])
             ->columns(1);
     }
@@ -67,7 +67,7 @@ class PermissionResource extends Resource
                 Tables\Filters\Filter::make('created_at')
                     ->form([
                         Forms\Components\DatePicker::make('created_from')
-                            ->placeholder(fn ($state): string => 'Feb 17, ' . now()->subYear()->format('Y')),
+                            ->placeholder(fn ($state): string => 'Feb 17, '.now()->subYear()->format('Y')),
                         Forms\Components\DatePicker::make('created_until')
                             ->placeholder(fn ($state): string => now()->format('M d, Y')),
                     ])
@@ -85,10 +85,10 @@ class PermissionResource extends Resource
                     ->indicateUsing(function (array $data): array {
                         $indicators = [];
                         if ($data['created_from'] ?? null) {
-                            $indicators['created_from'] = 'Order from ' . Carbon::parse($data['created_from'])->toFormattedDateString();
+                            $indicators['created_from'] = 'Order from '.Carbon::parse($data['created_from'])->toFormattedDateString();
                         }
                         if ($data['created_until'] ?? null) {
-                            $indicators['created_until'] = 'Order until ' . Carbon::parse($data['created_until'])->toFormattedDateString();
+                            $indicators['created_until'] = 'Order until '.Carbon::parse($data['created_until'])->toFormattedDateString();
                         }
 
                         return $indicators;
@@ -96,7 +96,7 @@ class PermissionResource extends Resource
                 Tables\Filters\Filter::make('updated_at')
                     ->form([
                         Forms\Components\DatePicker::make('updated_from')
-                            ->placeholder(fn ($state): string => 'Feb 17, ' . now()->subYear()->format('Y')),
+                            ->placeholder(fn ($state): string => 'Feb 17, '.now()->subYear()->format('Y')),
                         Forms\Components\DatePicker::make('updated_until')
                             ->placeholder(fn ($state): string => now()->format('M d, Y')),
                     ])
@@ -114,10 +114,10 @@ class PermissionResource extends Resource
                     ->indicateUsing(function (array $data): array {
                         $indicators = [];
                         if ($data['updated_from'] ?? null) {
-                            $indicators['updated_from'] = 'Order from ' . Carbon::parse($data['updated_from'])->toFormattedDateString();
+                            $indicators['updated_from'] = 'Order from '.Carbon::parse($data['updated_from'])->toFormattedDateString();
                         }
                         if ($data['updated_until'] ?? null) {
-                            $indicators['updated_until'] = 'Order until ' . Carbon::parse($data['updated_until'])->toFormattedDateString();
+                            $indicators['updated_until'] = 'Order until '.Carbon::parse($data['updated_until'])->toFormattedDateString();
                         }
 
                         return $indicators;
@@ -131,7 +131,7 @@ class PermissionResource extends Resource
                 Tables\Actions\DeleteAction::make(),
             ]);
     }
-    
+
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist
@@ -143,12 +143,12 @@ class PermissionResource extends Resource
                     ->dateTime(),
                 Infolists\Components\TextEntry::make('updated_at')
                     ->label('Updated At')
-                    ->dateTime()
+                    ->dateTime(),
             ])
             ->columns(1)
             ->inlineLabel();
     }
-    
+
     public static function getPages(): array
     {
         return [

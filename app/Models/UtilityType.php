@@ -11,24 +11,24 @@ class UtilityType extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
+
     public $table = 'utility_types';
-    
+
     protected $fillable = [
         'name',
-        'description'
+        'description',
     ];
-    
+
     protected $casts = [
-        
+
     ];
-    
+
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
-    ];    
-    
+        'deleted_at',
+    ];
+
     public function meters(): HasMany
     {
         return $this->hasMany(Meter::class);

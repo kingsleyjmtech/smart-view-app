@@ -15,11 +15,11 @@ class Meter extends Model
 
     public const STATUS_SELECT = [
         'Active' => 'Active',
-        'Inactive' => 'Inactive'
+        'Inactive' => 'Inactive',
     ];
-    
+
     public $table = 'meters';
-    
+
     protected $fillable = [
         'tenant_id',
         'user_id',
@@ -27,19 +27,19 @@ class Meter extends Model
         'code',
         'location',
         'installation_date',
-        'status'
+        'status',
     ];
-    
+
     protected $casts = [
-        
+
     ];
-    
+
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
-    ];    
-    
+        'deleted_at',
+    ];
+
     public function tenant(): BelongsTo
     {
         return $this->belongsTo(Tenant::class);

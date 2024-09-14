@@ -14,7 +14,7 @@ class TariffApiController extends Controller
     public function index()
     {
         abort_if(
-            !auth()->user()->hasPermission('tariff_access'),
+            ! auth()->user()->hasPermission('tariff_access'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -33,7 +33,7 @@ class TariffApiController extends Controller
     public function show(Tariff $tariff)
     {
         abort_if(
-            !auth()->user()->hasPermission('tariff_show'),
+            ! auth()->user()->hasPermission('tariff_show'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 
@@ -52,7 +52,7 @@ class TariffApiController extends Controller
     public function destroy(Tariff $tariff)
     {
         abort_if(
-            !auth()->user()->hasPermission('tariff_delete'),
+            ! auth()->user()->hasPermission('tariff_delete'),
             ResponseAlias::HTTP_FORBIDDEN, '403 Forbidden'
         );
 

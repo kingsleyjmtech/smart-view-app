@@ -11,27 +11,27 @@ class Tariff extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
+
     public $table = 'tariffs';
-    
+
     protected $fillable = [
         'rate',
         'description',
         'start_date',
         'end_date',
-        'name'
+        'name',
     ];
-    
+
     protected $casts = [
-        
+
     ];
-    
+
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
-    ];    
-    
+        'deleted_at',
+    ];
+
     public function meterTariffs(): HasMany
     {
         return $this->hasMany(MeterTariff::class);

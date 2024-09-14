@@ -11,23 +11,23 @@ class Role extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
+
     public $table = 'roles';
-    
+
     protected $fillable = [
-        'name'
+        'name',
     ];
-    
+
     protected $casts = [
-        
+
     ];
-    
+
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
-    ];    
-    
+        'deleted_at',
+    ];
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);

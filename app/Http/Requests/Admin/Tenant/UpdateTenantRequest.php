@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Admin\Tenant;
 
-use App\Models\Tenant;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
@@ -10,8 +9,8 @@ class UpdateTenantRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        abort_if(            
-            !auth()->user()->hasPermission('tenant_edit'),
+        abort_if(
+            ! auth()->user()->hasPermission('tenant_edit'),
             response()->json(
                 ['message' => 'This action is unauthorized.'],
                 ResponseAlias::HTTP_FORBIDDEN
@@ -19,7 +18,7 @@ class UpdateTenantRequest extends FormRequest
         );
 
         return true;
-     }
+    }
 
     public function rules(): array
     {
@@ -27,18 +26,18 @@ class UpdateTenantRequest extends FormRequest
             'customer_id' => [
                 'integer',
                 'exists:customers,id',
-                'required'
+                'required',
             ],
             'user_id' => [
                 'integer',
                 'exists:users,id',
-                'nullable'
+                'nullable',
             ],
             'uuid' => [
                 'nullable',
                 'string',
-                'max:255'
-            ]
+                'max:255',
+            ],
         ];
     }
 }

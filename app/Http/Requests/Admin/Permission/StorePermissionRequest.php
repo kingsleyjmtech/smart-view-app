@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Admin\Permission;
 
-use App\Models\Permission;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
@@ -11,7 +10,7 @@ class StorePermissionRequest extends FormRequest
     public function authorize(): bool
     {
         abort_if(
-            !auth()->user()->hasPermission('permission_create'),
+            ! auth()->user()->hasPermission('permission_create'),
             response()->json(
                 ['message' => 'This action is unauthorized.'],
                 ResponseAlias::HTTP_FORBIDDEN
@@ -19,7 +18,7 @@ class StorePermissionRequest extends FormRequest
         );
 
         return true;
-     }
+    }
 
     public function rules(): array
     {
@@ -27,8 +26,8 @@ class StorePermissionRequest extends FormRequest
             'name' => [
                 'required',
                 'string',
-                'max:255'
-            ]
+                'max:255',
+            ],
         ];
     }
 }

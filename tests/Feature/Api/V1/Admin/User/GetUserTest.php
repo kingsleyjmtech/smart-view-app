@@ -11,14 +11,14 @@ beforeEach(function () {
     $this->baseUrl = 'api/v1/admin/users';
     $this->adminRole = Role::factory()->create(['name' => 'Admin']);
     $this->userRole = Role::factory()->create(['name' => 'User']);
-    
+
     $this->permission = Permission::factory()->create(['name' => 'user_show']);
-    
+
     $this->adminRole->permissions()->sync([$this->permission->id]);
-        
+
     $this->adminUser = User::factory()->create();
     $this->user = User::factory()->create();
-    
+
     $this->adminUser->roles()->sync([$this->adminRole->id]);
 });
 
