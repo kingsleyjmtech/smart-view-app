@@ -30,7 +30,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
     Route::post('reset-password', [ForgotPasswordController::class, 'reset']);
 
     // Verify Email
-    Route::get('verify/email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify');
+    Route::get('verify/email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.show');
     Route::post('verify/email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify');
 
     // Get Ping Route
