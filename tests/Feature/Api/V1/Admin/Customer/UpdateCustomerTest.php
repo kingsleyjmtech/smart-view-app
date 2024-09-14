@@ -30,6 +30,7 @@ it('should update customer', function () {
     $customerData = [
         'user_id' => User::factory()->create()->id,
         'name' => trim(Str::substr(fake()->name(), 2, 100)),
+        'status' => fake()->randomElement(Customer::STATUS_SELECT),
     ];
 
     $response = $this->putJson("{$this->baseUrl}/$customer->id", $customerData);
@@ -45,6 +46,7 @@ it('should not update customer if unauthorized', function () {
     $customerData = [
         'user_id' => User::factory()->create()->id,
         'name' => trim(Str::substr(fake()->name(), 2, 100)),
+        'status' => fake()->randomElement(Customer::STATUS_SELECT),
     ];
 
     $response = $this->putJson("{$this->baseUrl}/$customer->id", $customerData);
@@ -58,6 +60,7 @@ it('should not update customer if unauthenticated', function () {
     $customerData = [
         'user_id' => User::factory()->create()->id,
         'name' => trim(Str::substr(fake()->name(), 2, 100)),
+        'status' => fake()->randomElement(Customer::STATUS_SELECT),
     ];
 
     $response = $this->putJson("{$this->baseUrl}/$customer->id", $customerData);
@@ -79,6 +82,7 @@ it('should return validation errors when creating customer', function () {
     $response->assertJsonValidationErrors([
         'user_id',
         'name',
+        'status',
     ]);
 });
 

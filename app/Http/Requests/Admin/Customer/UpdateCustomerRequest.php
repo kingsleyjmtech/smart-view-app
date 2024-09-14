@@ -34,6 +34,9 @@ class UpdateCustomerRequest extends FormRequest
                 'min:2',
                 'max:100',
             ],
+            'status' => [
+                'required',
+            ],
         ];
     }
 }

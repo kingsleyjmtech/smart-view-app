@@ -14,6 +14,7 @@ class UtilityTypeFactory extends Factory
         return [
             'name' => fake()->name(),
             'description' => fake()->sentence(20),
+            'status' => fake()->randomElement(UtilityType::STATUS_SELECT),
         ];
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Customer;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
@@ -28,6 +29,7 @@ it('should create customer', function () {
     $customerData = [
         'user_id' => User::factory()->create()->id,
         'name' => trim(Str::substr(fake()->name(), 2, 100)),
+        'status' => fake()->randomElement(Customer::STATUS_SELECT),
     ];
 
     $response = $this->postJson("{$this->baseUrl}", $customerData);
@@ -42,6 +44,7 @@ it('should not create customer if unauthorized', function () {
     $customerData = [
         'user_id' => User::factory()->create()->id,
         'name' => trim(Str::substr(fake()->name(), 2, 100)),
+        'status' => fake()->randomElement(Customer::STATUS_SELECT),
     ];
 
     $response = $this->postJson("{$this->baseUrl}", $customerData);
@@ -54,6 +57,7 @@ it('should not create customer if unauthenticated', function () {
     $customerData = [
         'user_id' => User::factory()->create()->id,
         'name' => trim(Str::substr(fake()->name(), 2, 100)),
+        'status' => fake()->randomElement(Customer::STATUS_SELECT),
     ];
 
     $response = $this->postJson("{$this->baseUrl}", $customerData);
@@ -74,5 +78,6 @@ it('should return validation errors when creating customer', function () {
     $response->assertJsonValidationErrors([
         'user_id',
         'name',
+        'status',
     ]);
 });

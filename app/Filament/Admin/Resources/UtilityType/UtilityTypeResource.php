@@ -36,6 +36,11 @@ class UtilityTypeResource extends Resource
                 Forms\Components\TextInput::make('description')
                     ->label('Description')
                     ->placeholder('Enter Description'),
+                Forms\Components\Select::make('status')
+                    ->label('Status')
+                    ->placeholder('Select Status')
+                    ->options(UtilityType::STATUS_SELECT)
+                    ->required(),
 
             ])
             ->columns(1);
@@ -57,6 +62,11 @@ class UtilityTypeResource extends Resource
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('description')
                     ->label('Description')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->label('Status')
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
@@ -149,6 +159,8 @@ class UtilityTypeResource extends Resource
                     ->label('Name'),
                 Infolists\Components\TextEntry::make('description')
                     ->label('Description'),
+                Infolists\Components\TextEntry::make('status')
+                    ->label('Status'),
                 Infolists\Components\TextEntry::make('created_at')
                     ->label('Created At')
                     ->dateTime(),

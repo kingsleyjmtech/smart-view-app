@@ -13,11 +13,17 @@ class Customer extends Model
     use HasFactory;
     use SoftDeletes;
 
+    public const STATUS_SELECT = [
+        'Active' => 'Active',
+        'Inactive' => 'Inactive',
+    ];
+
     public $table = 'customers';
 
     protected $fillable = [
         'user_id',
         'name',
+        'status',
     ];
 
     protected $casts = [

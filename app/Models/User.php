@@ -20,6 +20,11 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use SoftDeletes;
 
+    public const STATUS_SELECT = [
+        'Active' => 'Active',
+        'Inactive' => 'Inactive',
+    ];
+
     public $table = 'users';
 
     protected $fillable = [
@@ -29,6 +34,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at',
         'password',
         'remember_token',
+        'status',
     ];
 
     protected $hidden = [
@@ -87,7 +93,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'hash' => sha1($this->getEmailForVerification()),
         ]);
 
-        $verifyEmail = new VerifyEmail();
+        $verifyEmail = new VerifyEmail;
 
         $verifyEmail->createUrlUsing(function () use ($verifyUrl) {
             return $verifyUrl;

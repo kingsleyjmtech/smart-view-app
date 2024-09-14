@@ -17,6 +17,7 @@ class TenantFactory extends Factory
             'customer_id' => Customer::factory(),
             'user_id' => User::factory(),
             'uuid' => fake()->sentence(),
+            'status' => fake()->randomElement(Tenant::STATUS_SELECT),
         ];
     }
 }

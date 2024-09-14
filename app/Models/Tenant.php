@@ -13,12 +13,18 @@ class Tenant extends Model
     use HasFactory;
     use SoftDeletes;
 
+    public const STATUS_SELECT = [
+        'Active' => 'Active',
+        'Inactive' => 'Inactive',
+    ];
+
     public $table = 'tenants';
 
     protected $fillable = [
         'customer_id',
         'user_id',
         'uuid',
+        'status',
     ];
 
     protected $casts = [

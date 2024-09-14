@@ -33,6 +33,9 @@ class UpdateUtilityTypeRequest extends FormRequest
                 'nullable',
                 'string',
             ],
+            'status' => [
+                'required',
+            ],
         ];
     }
 }

@@ -24,6 +24,7 @@ class AuthApiController extends Controller
                 'email' => $request->email,
                 'timezone' => $request->timezone,
                 'password' => Hash::make($request->password),
+                'status' => $request->status,
             ]);
 
             event(new Registered($user));
@@ -122,6 +123,7 @@ class AuthApiController extends Controller
                 'email' => $request->email,
                 'timezone' => $request->timezone,
                 'password' => Hash::make($request->password),
+                'status' => $request->status,
             ]);
 
             return new MyDetailsResource($user);

@@ -3,6 +3,7 @@
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\UtilityType;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 
@@ -28,6 +29,7 @@ it('should create utility type', function () {
     $utilityTypeData = [
         'name' => trim(Str::substr(fake()->name(), 2, 100)),
         'description' => fake()->sentence(20),
+        'status' => fake()->randomElement(UtilityType::STATUS_SELECT),
     ];
 
     $response = $this->postJson("{$this->baseUrl}", $utilityTypeData);
@@ -42,6 +44,7 @@ it('should not create utility type if unauthorized', function () {
     $utilityTypeData = [
         'name' => trim(Str::substr(fake()->name(), 2, 100)),
         'description' => fake()->sentence(20),
+        'status' => fake()->randomElement(UtilityType::STATUS_SELECT),
     ];
 
     $response = $this->postJson("{$this->baseUrl}", $utilityTypeData);
@@ -54,6 +57,7 @@ it('should not create utility type if unauthenticated', function () {
     $utilityTypeData = [
         'name' => trim(Str::substr(fake()->name(), 2, 100)),
         'description' => fake()->sentence(20),
+        'status' => fake()->randomElement(UtilityType::STATUS_SELECT),
     ];
 
     $response = $this->postJson("{$this->baseUrl}", $utilityTypeData);
@@ -73,5 +77,6 @@ it('should return validation errors when creating utility type', function () {
     $response->assertStatus(422);
     $response->assertJsonValidationErrors([
         'name',
+        'status',
     ]);
 });
