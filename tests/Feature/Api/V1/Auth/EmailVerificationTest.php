@@ -21,7 +21,7 @@ it('should verify email with valid link', function () {
     Event::fake();
 
     $verificationUrl = URL::temporarySignedRoute(
-        'api.verification.verify',
+        'verification.show',
         now()->addMinutes(60),
         ['id' => $this->user->id, 'hash' => sha1($this->user->getEmailForVerification())]
     );
@@ -41,7 +41,7 @@ it('should verify email with valid link', function () {
 it('should not verify email with invalid user id', function () {
     $invalidUserId = 999;
     $verificationUrl = URL::temporarySignedRoute(
-        'api.verification.verify',
+        'verification.show',
         now()->addMinutes(60),
         ['id' => $invalidUserId, 'hash' => sha1($this->user->getEmailForVerification())]
     );
@@ -57,7 +57,7 @@ it('should not verify email with invalid user id', function () {
 it('should not verify email with invalid hash', function () {
     $invalidHash = 'invalid-hash';
     $verificationUrl = URL::temporarySignedRoute(
-        'api.verification.verify',
+        'verification.show',
         now()->addMinutes(60),
         ['id' => $this->user->id, 'hash' => $invalidHash]
     );
@@ -74,7 +74,7 @@ it('should not verify email if already verified', function () {
     $this->user->markEmailAsVerified();
 
     $verificationUrl = URL::temporarySignedRoute(
-        'api.verification.verify',
+        'verification.show',
         now()->addMinutes(60),
         ['id' => $this->user->id, 'hash' => sha1($this->user->getEmailForVerification())]
     );
