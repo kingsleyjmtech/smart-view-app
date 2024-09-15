@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('tenants', function (Blueprint $table) {
-            $table->string('status')->default('Active');
+            $table->uuid('status')->default('Active')->after('uuid');
         });
     }
 

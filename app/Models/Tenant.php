@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\MediaCollections\Models\Concerns\HasUuid;
 
 class Tenant extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use HasUuid;
 
     public const STATUS_SELECT = [
         'Active' => 'Active',

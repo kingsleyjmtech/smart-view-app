@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('utility_types', function (Blueprint $table) {
-            $table->string('status')->default('Active');
+            $table->string('status')->default('Active')->after('name');
         });
     }
 
