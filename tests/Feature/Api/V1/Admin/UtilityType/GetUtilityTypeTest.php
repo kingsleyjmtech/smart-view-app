@@ -34,6 +34,7 @@ it('should retrieve a single utility type', function () {
         'id' => $utilityType->id,
         'name' => $utilityType->name,
         'description' => $utilityType->description,
+        'status' => $utilityType->status,
         'created_at' => $utilityType->created_at,
         'updated_at' => $utilityType->updated_at,
         'deleted_at' => $utilityType->deleted_at,

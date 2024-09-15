@@ -18,6 +18,7 @@ class UsersSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => bcrypt('password'),
                 'remember_token' => '',
+                'status' => 'Active',
             ],
         ];
 

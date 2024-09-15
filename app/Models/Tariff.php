@@ -26,7 +26,7 @@ class Tariff extends Model
 
     ];
 
-    protected $dates = [
+    protected array $dates = [
         'created_at',
         'updated_at',
         'deleted_at',

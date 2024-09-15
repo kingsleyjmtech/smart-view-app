@@ -54,6 +54,11 @@ class UserResource extends Resource
                     ->required()
                     ->password()
                     ->maxLength(255),
+                Forms\Components\Select::make('status')
+                    ->label('Status')
+                    ->placeholder('Select Status')
+                    ->options(User::STATUS_SELECT)
+                    ->required(),
 
             ])
             ->columns(1);
@@ -90,6 +95,11 @@ class UserResource extends Resource
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('email_verified_at')
                     ->label('Email Verified At')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->label('Status')
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
@@ -189,6 +199,8 @@ class UserResource extends Resource
                 Infolists\Components\TextEntry::make('email_verified_at')
                     ->label('Email Verified At')
                     ->dateTime(),
+                Infolists\Components\TextEntry::make('status')
+                    ->label('Status'),
                 Infolists\Components\TextEntry::make('created_at')
                     ->label('Created At')
                     ->dateTime(),

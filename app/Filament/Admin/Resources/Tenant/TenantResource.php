@@ -36,6 +36,11 @@ class TenantResource extends Resource
                     ->relationship('user', 'email')
                     ->label('User')
                     ->placeholder('Select User'),
+                Forms\Components\Select::make('status')
+                    ->label('Status')
+                    ->placeholder('Select Status')
+                    ->options(Tenant::STATUS_SELECT)
+                    ->required(),
 
             ])
             ->columns(1);
@@ -62,6 +67,11 @@ class TenantResource extends Resource
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('uuid')
                     ->label('Uuid')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->label('Status')
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
@@ -156,6 +166,8 @@ class TenantResource extends Resource
                     ->label('User'),
                 Infolists\Components\TextEntry::make('uuid')
                     ->label('Uuid'),
+                Infolists\Components\TextEntry::make('status')
+                    ->label('Status'),
                 Infolists\Components\TextEntry::make('created_at')
                     ->label('Created At')
                     ->dateTime(),

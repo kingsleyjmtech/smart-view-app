@@ -38,6 +38,9 @@ class UpdateTenantRequest extends FormRequest
                 'string',
                 'max:255',
             ],
+            'status' => [
+                'required',
+            ],
         ];
     }
 }

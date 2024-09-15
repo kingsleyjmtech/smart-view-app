@@ -34,6 +34,7 @@ it('should retrieve a single customer', function () {
         'id' => $customer->id,
         'user_id' => $customer->user_id,
         'name' => $customer->name,
+        'status' => $customer->status,
         'created_at' => $customer->created_at,
         'updated_at' => $customer->updated_at,
         'deleted_at' => $customer->deleted_at,

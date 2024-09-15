@@ -37,6 +37,7 @@ it('should retrieve a list of users', function () {
             'email' => $user->email,
             'timezone' => $user->timezone,
             'email_verified_at' => $user->email_verified_at->format('Y-m-d H:i:s'),
+            'status' => $user->status,
             'created_at' => $user->created_at,
             'updated_at' => $user->updated_at,
             'deleted_at' => $user->deleted_at,

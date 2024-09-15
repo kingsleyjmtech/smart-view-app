@@ -19,11 +19,12 @@ class AuthApiController extends Controller
     public function register(RegisterRequest $request)
     {
         return DB::transaction(function () use ($request) {
-            $user = User::create([
+            $user = User::query()->create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'timezone' => $request->timezone,
                 'password' => Hash::make($request->password),
+                'status' => 'Active',
             ]);
 
             event(new Registered($user));
@@ -46,12 +47,18 @@ class AuthApiController extends Controller
     {
         $request->authenticate();
 
+        /* @var User $user */
+        $user = $request->user();
+
+        if ($user->status !== 'Active') {
+            return response()->json([
+                'message' => 'Your account is inactive. Please contact support.',
+            ], ResponseAlias::HTTP_FORBIDDEN);
+        }
+
         $token = $request->user()->createToken(
             name: 'auth-token'
         )->plainTextToken;
-
-        /* @var User $user */
-        $user = $request->user();
 
         $response = [
             'token' => $token,
@@ -122,6 +129,7 @@ class AuthApiController extends Controller
                 'email' => $request->email,
                 'timezone' => $request->timezone,
                 'password' => Hash::make($request->password),
+                'status' => $request->status,
             ]);
 
             return new MyDetailsResource($user);
