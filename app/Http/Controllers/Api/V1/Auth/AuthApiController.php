@@ -47,12 +47,18 @@ class AuthApiController extends Controller
     {
         $request->authenticate();
 
+        /* @var User $user */
+        $user = $request->user();
+
+        if ($user->status !== 'Active') {
+            return response()->json([
+                'message' => 'Your account is inactive. Please contact support.',
+            ], ResponseAlias::HTTP_FORBIDDEN);
+        }
+
         $token = $request->user()->createToken(
             name: 'auth-token'
         )->plainTextToken;
-
-        /* @var User $user */
-        $user = $request->user();
 
         $response = [
             'token' => $token,
