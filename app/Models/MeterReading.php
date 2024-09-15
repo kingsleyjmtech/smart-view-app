@@ -25,7 +25,7 @@ class MeterReading extends Model
 
     ];
 
-    protected $dates = [
+    protected array $dates = [
         'reading_date',
         'created_at',
         'updated_at',

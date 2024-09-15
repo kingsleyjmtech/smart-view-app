@@ -38,6 +38,11 @@ class CustomerResource extends Resource
                     ->required()
                     ->minLength(2)
                     ->maxLength(100),
+                Forms\Components\Select::make('status')
+                    ->label('Status')
+                    ->placeholder('Select Status')
+                    ->options(Customer::STATUS_SELECT)
+                    ->required(),
 
             ])
             ->columns(1);
@@ -59,6 +64,11 @@ class CustomerResource extends Resource
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Name')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->label('Status')
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
@@ -151,6 +161,8 @@ class CustomerResource extends Resource
                     ->label('User'),
                 Infolists\Components\TextEntry::make('name')
                     ->label('Name'),
+                Infolists\Components\TextEntry::make('status')
+                    ->label('Status'),
                 Infolists\Components\TextEntry::make('created_at')
                     ->label('Created At')
                     ->dateTime(),

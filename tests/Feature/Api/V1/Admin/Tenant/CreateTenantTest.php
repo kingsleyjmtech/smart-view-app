@@ -3,6 +3,7 @@
 use App\Models\Customer;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
@@ -30,6 +31,7 @@ it('should create tenant', function () {
         'customer_id' => Customer::factory()->create()->id,
         'user_id' => User::factory()->create()->id,
         'uuid' => trim(Str::substr(fake()->sentence(), 1, 255)),
+        'status' => fake()->randomElement(Tenant::STATUS_SELECT),
     ];
 
     $response = $this->postJson("{$this->baseUrl}", $tenantData);
@@ -45,6 +47,7 @@ it('should not create tenant if unauthorized', function () {
         'customer_id' => Customer::factory()->create()->id,
         'user_id' => User::factory()->create()->id,
         'uuid' => trim(Str::substr(fake()->sentence(), 1, 255)),
+        'status' => fake()->randomElement(Tenant::STATUS_SELECT),
     ];
 
     $response = $this->postJson("{$this->baseUrl}", $tenantData);
@@ -58,6 +61,7 @@ it('should not create tenant if unauthenticated', function () {
         'customer_id' => Customer::factory()->create()->id,
         'user_id' => User::factory()->create()->id,
         'uuid' => trim(Str::substr(fake()->sentence(), 1, 255)),
+        'status' => fake()->randomElement(Tenant::STATUS_SELECT),
     ];
 
     $response = $this->postJson("{$this->baseUrl}", $tenantData);
@@ -77,5 +81,6 @@ it('should return validation errors when creating tenant', function () {
     $response->assertStatus(422);
     $response->assertJsonValidationErrors([
         'customer_id',
+        'status',
     ]);
 });

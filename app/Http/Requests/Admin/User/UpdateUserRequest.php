@@ -60,6 +60,9 @@ class UpdateUserRequest extends FormRequest
                 'string',
                 'max:255',
             ],
+            'status' => [
+                'required',
+            ],
         ];
     }
 }

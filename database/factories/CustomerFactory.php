@@ -15,6 +15,7 @@ class CustomerFactory extends Factory
         return [
             'user_id' => User::factory(),
             'name' => fake()->name(),
+            'status' => fake()->randomElement(Customer::STATUS_SELECT),
         ];
     }
 }

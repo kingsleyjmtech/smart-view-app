@@ -30,6 +30,7 @@ it('should update utility type', function () {
     $utilityTypeData = [
         'name' => trim(Str::substr(fake()->name(), 2, 100)),
         'description' => fake()->sentence(20),
+        'status' => fake()->randomElement(UtilityType::STATUS_SELECT),
     ];
 
     $response = $this->putJson("{$this->baseUrl}/$utilityType->id", $utilityTypeData);
@@ -45,6 +46,7 @@ it('should not update utility type if unauthorized', function () {
     $utilityTypeData = [
         'name' => trim(Str::substr(fake()->name(), 2, 100)),
         'description' => fake()->sentence(20),
+        'status' => fake()->randomElement(UtilityType::STATUS_SELECT),
     ];
 
     $response = $this->putJson("{$this->baseUrl}/$utilityType->id", $utilityTypeData);
@@ -58,6 +60,7 @@ it('should not update utility type if unauthenticated', function () {
     $utilityTypeData = [
         'name' => trim(Str::substr(fake()->name(), 2, 100)),
         'description' => fake()->sentence(20),
+        'status' => fake()->randomElement(UtilityType::STATUS_SELECT),
     ];
 
     $response = $this->putJson("{$this->baseUrl}/$utilityType->id", $utilityTypeData);
@@ -78,6 +81,7 @@ it('should return validation errors when creating utility type', function () {
     $response->assertStatus(422);
     $response->assertJsonValidationErrors([
         'name',
+        'status',
     ]);
 });
 

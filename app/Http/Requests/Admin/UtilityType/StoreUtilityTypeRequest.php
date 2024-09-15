@@ -33,6 +33,9 @@ class StoreUtilityTypeRequest extends FormRequest
                 'nullable',
                 'string',
             ],
+            'status' => [
+                'required',
+            ],
         ];
     }
 }

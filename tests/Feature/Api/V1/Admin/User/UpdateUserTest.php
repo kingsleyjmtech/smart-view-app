@@ -35,6 +35,7 @@ it('should update user', function () {
         'timezone' => trim(Str::substr(fake()->sentence(), 1, 255)),
         'email_verified_at' => fake()->dateTime()->format('Y-m-d H:i:s'),
         'password' => 'password',
+        'status' => fake()->randomElement(User::STATUS_SELECT),
     ];
 
     $response = $this->putJson("{$this->baseUrl}/$user->id", array_merge($userReqData, $userData));
@@ -57,6 +58,7 @@ it('should not update user if unauthorized', function () {
         'timezone' => trim(Str::substr(fake()->sentence(), 1, 255)),
         'email_verified_at' => fake()->dateTime()->format('Y-m-d H:i:s'),
         'password' => 'password',
+        'status' => fake()->randomElement(User::STATUS_SELECT),
     ];
 
     $response = $this->putJson("{$this->baseUrl}/$user->id", array_merge($userReqData, $userData));
@@ -77,6 +79,7 @@ it('should not update user if unauthenticated', function () {
         'timezone' => trim(Str::substr(fake()->sentence(), 1, 255)),
         'email_verified_at' => fake()->dateTime()->format('Y-m-d H:i:s'),
         'password' => 'password',
+        'status' => fake()->randomElement(User::STATUS_SELECT),
     ];
 
     $response = $this->putJson("{$this->baseUrl}/$user->id", array_merge($userReqData, $userData));
@@ -100,6 +103,7 @@ it('should return validation errors when creating user', function () {
         'name',
         'email',
         'password',
+        'status',
     ]);
 });
 

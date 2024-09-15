@@ -7,11 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\MediaCollections\Models\Concerns\HasUuid;
 
 class Tenant extends Model
 {
     use HasFactory;
+    use HasUuid;
     use SoftDeletes;
+
+    public const STATUS_SELECT = [
+        'Active' => 'Active',
+        'Inactive' => 'Inactive',
+    ];
 
     public $table = 'tenants';
 
@@ -19,13 +26,14 @@ class Tenant extends Model
         'customer_id',
         'user_id',
         'uuid',
+        'status',
     ];
 
     protected $casts = [
 
     ];
 
-    protected $dates = [
+    protected array $dates = [
         'created_at',
         'updated_at',
         'deleted_at',

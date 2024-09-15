@@ -35,6 +35,7 @@ it('should retrieve a single tenant', function () {
         'customer_id' => $tenant->customer_id,
         'user_id' => $tenant->user_id,
         'uuid' => $tenant->uuid,
+        'status' => $tenant->status,
         'created_at' => $tenant->created_at,
         'updated_at' => $tenant->updated_at,
         'deleted_at' => $tenant->deleted_at,
