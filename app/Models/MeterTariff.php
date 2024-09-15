@@ -25,7 +25,7 @@ class MeterTariff extends Model
 
     ];
 
-    protected $dates = [
+    protected array $dates = [
         'effective_from',
         'effective_to',
         'created_at',

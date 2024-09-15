@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\V1\Admin\UtilityType\UtilityTypeApiController;
 use App\Http\Controllers\Api\V1\Auth\AuthApiController;
 use App\Http\Controllers\Api\V1\Auth\EmailVerificationController;
 use App\Http\Controllers\Api\V1\Auth\ForgotPasswordController;
+use App\Http\Controllers\Api\V1\User\Shared\TimezoneController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
@@ -42,6 +43,9 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
     Route::post('/ping', function () {
         return response()->json(['message' => 'pong']);
     })->name('post-ping');
+
+    // Get Timezones
+    Route::get('/timezones', [TimezoneController::class, 'getTimeZones']);
 });
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum']], function () {

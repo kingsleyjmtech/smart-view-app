@@ -34,7 +34,7 @@ class Consumption extends Model
 
     ];
 
-    protected $dates = [
+    protected array $dates = [
         'date',
         'created_at',
         'updated_at',
