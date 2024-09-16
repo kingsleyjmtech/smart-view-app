@@ -40,6 +40,25 @@ class Meter extends Model
         'deleted_at',
     ];
 
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function ($meter) {
+            $meter->code = static::generateUniqueCode();
+        });
+    }
+
+    protected static function generateUniqueCode(): string
+    {
+        do {
+            $number = mt_rand(0, 99999999999);
+            $code = 'MTR-'.str_pad($number, 11, '0', STR_PAD_LEFT);
+        } while (self::where('code', $code)->exists());
+
+        return $code;
+    }
+
     public function tenant(): BelongsTo
     {
         return $this->belongsTo(Tenant::class);

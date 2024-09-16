@@ -18,8 +18,7 @@ class MeterFactory extends Factory
             'tenant_id' => Tenant::factory(),
             'user_id' => User::factory(),
             'utility_type_id' => UtilityType::factory(),
-            'code' => fake()->sentence(),
-            'location' => fake()->sentence(),
+            'location' => fake()->address(),
             'installation_date' => fake()->date(),
             'status' => fake()->randomElement(Meter::STATUS_SELECT),
         ];
