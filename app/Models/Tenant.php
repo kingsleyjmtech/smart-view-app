@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\MediaCollections\Models\Concerns\HasUuid;
 
 class Tenant extends Model
@@ -15,6 +17,7 @@ class Tenant extends Model
     use HasFactory;
     use HasStatus;
     use HasUuid;
+    use LogsActivity;
     use SoftDeletes;
 
     public const STATUS_SELECT = [
@@ -44,6 +47,13 @@ class Tenant extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logFillable()
+            ->logOnlyDirty();
+    }
 
     public function customer(): BelongsTo
     {
