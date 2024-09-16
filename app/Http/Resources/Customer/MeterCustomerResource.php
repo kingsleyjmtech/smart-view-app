@@ -3,12 +3,12 @@
 namespace App\Http\Resources\Customer;
 
 use App\Http\Resources\Main\CustomerMainResource;
-use App\Http\Resources\Main\UserMainResource;
+use App\Http\Resources\Main\UtilityTypeMainResource;
 use App\Traits\Traits\Shared\FormatsTime;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TenantCustomerResource extends JsonResource
+class MeterCustomerResource extends JsonResource
 {
     use FormatsTime;
 
@@ -16,14 +16,18 @@ class TenantCustomerResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'tenant_id' => $this->tenant_id,
             'customer_id' => $this->customer_id,
-            'user_id' => $this->user_id,
-            'uuid' => $this->uuid,
+            'utility_type_id' => $this->utility_type_id,
+            'code' => $this->code,
+            'location' => $this->location,
+            'installation_date' => $this->installation_date,
             'status' => $this->status,
             'created_at' => $this->formatTime($this->created_at),
             'updated_at' => $this->formatTime($this->updated_at),
+            'utility_type' => new UtilityTypeMainResource($this->whenLoaded('utilityType')),
             'customer' => new CustomerMainResource($this->whenLoaded('customer')),
-            'user' => new UserMainResource($this->whenLoaded('user')),
+            'tenant' => new TenantCustomerResource($this->whenLoaded('tenant')),
         ];
     }
 }
