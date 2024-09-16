@@ -8,6 +8,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\UpdateMyDetailsRequest;
 use App\Http\Resources\Auth\MyDetailsResource;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\DB;
@@ -24,10 +25,15 @@ class AuthApiController extends Controller
                 'email' => $request->email,
                 'timezone' => $request->timezone,
                 'password' => Hash::make($request->password),
-                'status' => 'Active',
+                'status' => User::ACTIVE_STATUS,
             ]);
 
             event(new Registered($user));
+
+            $userRole = Role::query()
+                ->where('name', 'User')
+                ->first();
+            $user->roles()->attach($userRole);
 
             $token = $user->createToken(
                 name: 'auth-token'
@@ -129,7 +135,6 @@ class AuthApiController extends Controller
                 'email' => $request->email,
                 'timezone' => $request->timezone,
                 'password' => Hash::make($request->password),
-                'status' => $request->status,
             ]);
 
             return new MyDetailsResource($user);

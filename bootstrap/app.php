@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Middleware\CheckUserStatus;
+use App\Http\Middleware\CheckUserStatusMiddleware;
+use App\Http\Middleware\SetUserTimezoneMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -14,7 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'checkStatus' => CheckUserStatus::class,
+            'check_status' => CheckUserStatusMiddleware::class,
+            'set_user_timezone' => SetUserTimezoneMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

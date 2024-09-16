@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Traits\Shared\HasStatus;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -12,11 +13,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
+    use HasStatus;
+    use LogsActivity;
     use Notifiable;
     use SoftDeletes;
 
@@ -24,6 +29,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'Active' => 'Active',
         'Inactive' => 'Inactive',
     ];
+
+    public const ACTIVE_STATUS = 'Active';
+
+    public const INACTIVE_STATUS = 'Inactive';
 
     public $table = 'users';
 
@@ -52,6 +61,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'updated_at',
         'deleted_at',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logFillable()
+            ->logOnlyDirty();
+    }
 
     public function hasPermission(string $permissionName): bool
     {
