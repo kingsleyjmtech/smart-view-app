@@ -35,9 +35,6 @@ class UpdateMyDetailsRequest extends FormRequest
                 'string',
                 'max:255',
             ],
-            'status' => [
-                'required',
-            ],
         ];
     }
 }

@@ -32,10 +32,10 @@ class MeterResource extends Resource
                     ->label('Tenant')
                     ->placeholder('Select Tenant')
                     ->required(),
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'email')
-                    ->label('User')
-                    ->placeholder('Select User'),
+                Forms\Components\Select::make('customer_id')
+                    ->relationship('customer', 'name')
+                    ->label('Customer')
+                    ->placeholder('Select Customer'),
                 Forms\Components\Select::make('utility_type_id')
                     ->relationship('utilityType', 'name')
                     ->label('Utility Type')
@@ -78,8 +78,8 @@ class MeterResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
-                Tables\Columns\TextColumn::make('user.email')
-                    ->label('User')
+                Tables\Columns\TextColumn::make('customer.name')
+                    ->label('Customer')
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
@@ -195,8 +195,8 @@ class MeterResource extends Resource
             ->schema([
                 Infolists\Components\TextEntry::make('tenant.uuid')
                     ->label('Tenant'),
-                Infolists\Components\TextEntry::make('user.email')
-                    ->label('User'),
+                Infolists\Components\TextEntry::make('customer.name')
+                    ->label('Customer'),
                 Infolists\Components\TextEntry::make('utilityType.name')
                     ->label('Utility Type'),
                 Infolists\Components\TextEntry::make('code')

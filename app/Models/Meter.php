@@ -2,15 +2,20 @@
 
 namespace App\Models;
 
+use App\Traits\Traits\Shared\HasStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Meter extends Model
 {
     use HasFactory;
+    use HasStatus;
+    use LogsActivity;
     use SoftDeletes;
 
     public const STATUS_SELECT = [
@@ -18,11 +23,15 @@ class Meter extends Model
         'Inactive' => 'Inactive',
     ];
 
+    public const ACTIVE_STATUS = 'Active';
+
+    public const INACTIVE_STATUS = 'Inactive';
+
     public $table = 'meters';
 
     protected $fillable = [
         'tenant_id',
-        'user_id',
+        'customer_id',
         'utility_type_id',
         'code',
         'location',
@@ -40,14 +49,40 @@ class Meter extends Model
         'deleted_at',
     ];
 
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logFillable()
+            ->logOnlyDirty();
+    }
+
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function ($meter) {
+            $meter->code = static::generateUniqueCode();
+        });
+    }
+
+    protected static function generateUniqueCode(): string
+    {
+        do {
+            $number = mt_rand(0, 99999999999);
+            $code = 'MTR-'.str_pad($number, 11, '0', STR_PAD_LEFT);
+        } while (self::where('code', $code)->exists());
+
+        return $code;
+    }
+
     public function tenant(): BelongsTo
     {
         return $this->belongsTo(Tenant::class);
     }
 
-    public function user(): BelongsTo
+    public function customer(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Customer::class);
     }
 
     public function utilityType(): BelongsTo

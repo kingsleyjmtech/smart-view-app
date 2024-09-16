@@ -14,7 +14,7 @@ class UsersSeeder extends Seeder
             [
                 'name' => 'Admin',
                 'email' => 'admin@admin.com',
-                'timezone' => '',
+                'timezone' => 'Africa/Johannesburg',
                 'email_verified_at' => now(),
                 'password' => bcrypt('password'),
                 'remember_token' => '',

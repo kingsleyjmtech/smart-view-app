@@ -23,14 +23,8 @@ class DatabaseSeeder extends Seeder
                 PermissionRoleSeeder::class,
                 UsersSeeder::class,
                 RoleUserSeeder::class,
-                ConsumptionSeeder::class,
-                CustomerSeeder::class,
-                MeterReadingSeeder::class,
-                MeterTariffSeeder::class,
-                MeterSeeder::class,
-                TariffSeeder::class,
-                TenantSeeder::class,
                 UtilityTypeSeeder::class,
+                LocalDataSeeder::class,
             ]);
         }
     }
