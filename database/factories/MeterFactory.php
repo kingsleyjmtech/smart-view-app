@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\Customer;
 use App\Models\Meter;
 use App\Models\Tenant;
-use App\Models\User;
 use App\Models\UtilityType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

@@ -28,9 +28,9 @@ class StoreMeterRequest extends FormRequest
                 'exists:tenants,id',
                 'required',
             ],
-            'user_id' => [
+            'customer_id' => [
                 'integer',
-                'exists:users,id',
+                'exists:customers,id',
                 'nullable',
             ],
             'utility_type_id' => [
