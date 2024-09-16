@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\V1\Auth\AuthApiController;
 use App\Http\Controllers\Api\V1\Auth\EmailVerificationController;
 use App\Http\Controllers\Api\V1\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\V1\User\Shared\TimezoneController;
+use App\Http\Controllers\Api\V1\User\Tenant\TenantUserApiController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
@@ -67,6 +68,9 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum',
     // My Details
     Route::get('/my-details', [AuthApiController::class, 'myDetails']);
     Route::put('/my-details', [AuthApiController::class, 'updateMyDetails']);
+
+    // My Tenants
+    Route::get('/my-tenants', [TenantUserApiController::class, 'index']);
 });
 
 Route::group(['prefix' => 'v1/admin', 'as' => 'api.admin.', 'middleware' => ['auth:sanctum', 'check_status', 'set_user_timezone']], function () {
