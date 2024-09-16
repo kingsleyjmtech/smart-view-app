@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Traits\Shared\HasStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,6 +13,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Concerns\HasUuid;
 class Tenant extends Model
 {
     use HasFactory;
+    use HasStatus;
     use HasUuid;
     use SoftDeletes;
 
@@ -19,6 +21,10 @@ class Tenant extends Model
         'Active' => 'Active',
         'Inactive' => 'Inactive',
     ];
+
+    public const ACTIVE_STATUS = 'Active';
+
+    public const INACTIVE_STATUS = 'Inactive';
 
     public $table = 'tenants';
 

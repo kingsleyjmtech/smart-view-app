@@ -62,7 +62,7 @@ class LocalDataSeeder extends Seeder
                 'reading_date' => $startOfYear->copy(),
                 'source' => 'Generated',
                 'created_at' => now(),
-                'updated_at' => now()
+                'updated_at' => now(),
             ];
 
             $startOfYear->addHour();
