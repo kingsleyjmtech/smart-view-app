@@ -90,6 +90,9 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum',
 
     // Meters
     Route::get('/meters', [MeterCustomerApiController::class, 'index']);
+
+    // Meter Readings
+    Route::get('/meters/{meter}/meter-readings', [MeterCustomerApiController::class, 'getMeterReadings']);
 });
 
 Route::group(['prefix' => 'v1/admin', 'as' => 'api.admin.', 'middleware' => ['auth:sanctum', 'check_status', 'set_user_timezone']], function () {
