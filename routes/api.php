@@ -48,7 +48,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
     Route::get('/timezones', [TimezoneController::class, 'getTimeZones']);
 });
 
-Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum', 'checkStatus']], function () {
+Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum', 'check_status', 'set_user_timezone']], function () {
     // Logout
     Route::post('/logout', [AuthApiController::class, 'logout']);
 
@@ -69,7 +69,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum',
     Route::put('/my-details', [AuthApiController::class, 'updateMyDetails']);
 });
 
-Route::group(['prefix' => 'v1/admin', 'as' => 'api.admin.', 'middleware' => ['auth:sanctum', 'checkStatus']], function () {
+Route::group(['prefix' => 'v1/admin', 'as' => 'api.admin.', 'middleware' => ['auth:sanctum', 'check_status', 'set_user_timezone']], function () {
     // Consumptions
     Route::apiResource('consumptions', ConsumptionApiController::class);
 

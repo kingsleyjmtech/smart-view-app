@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckUserStatus
+class CheckUserStatusMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
