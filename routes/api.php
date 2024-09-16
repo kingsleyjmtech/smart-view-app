@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\V1\Auth\AuthApiController;
 use App\Http\Controllers\Api\V1\Auth\EmailVerificationController;
 use App\Http\Controllers\Api\V1\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\V1\Customer\Customer\CustomerCustomerApiController;
+use App\Http\Controllers\Api\V1\Customer\Tenant\TenantCustomerApiController;
 use App\Http\Controllers\Api\V1\User\Meter\MeterUserApiController;
 use App\Http\Controllers\Api\V1\User\Shared\TimezoneController;
 use App\Http\Controllers\Api\V1\User\Tenant\TenantUserApiController;
@@ -82,6 +83,9 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum',
 
     // Customers
     Route::get('/customers', [CustomerCustomerApiController::class, 'index']);
+
+    // Tenants
+    Route::get('/tenants', [TenantCustomerApiController::class, 'index']);
 });
 
 Route::group(['prefix' => 'v1/admin', 'as' => 'api.admin.', 'middleware' => ['auth:sanctum', 'check_status', 'set_user_timezone']], function () {
