@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Customer;
 use App\Models\Meter;
 use App\Models\Tenant;
 use App\Models\User;
@@ -16,7 +17,7 @@ class MeterFactory extends Factory
     {
         return [
             'tenant_id' => Tenant::factory(),
-            'user_id' => User::factory(),
+            'customer_id' => Customer::factory(),
             'utility_type_id' => UtilityType::factory(),
             'location' => fake()->address(),
             'installation_date' => fake()->date(),

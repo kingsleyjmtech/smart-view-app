@@ -31,5 +31,8 @@ jobs:
       - name: Create SQLite Database
         run: touch database/database.sqlite
 
+      - name: Run Migrations
+        run: php artisan migrate --force
+
       - name: Run PHP Pest Tests
         run: ./vendor/bin/pest
