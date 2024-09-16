@@ -18,7 +18,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'timezone' => fake()->randomElement(DateTimeZone::listIdentifiers()),
-            'email_verified_at' => fake()->dateTime(),
+            'email_verified_at' => now(tz: config('app.timezone')),
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
             'status' => fake()->randomElement(User::STATUS_SELECT),
