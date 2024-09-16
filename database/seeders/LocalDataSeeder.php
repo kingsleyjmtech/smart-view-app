@@ -24,7 +24,6 @@ class LocalDataSeeder extends Seeder
                 'status' => 'Active',
             ])
             ->each(function ($user) use ($utilityTypeIds) {
-                $maxNumberOfMeterReadings = 10;
                 $maxNumberOfMeters = 10;
 
                 $customer = Customer::factory()
@@ -44,12 +43,36 @@ class LocalDataSeeder extends Seeder
                         ])->id,
                         'status' => 'Active',
                     ])
-                    ->each(function ($meter) use ($maxNumberOfMeterReadings) {
-                        MeterReading::factory()
-                            ->count(rand(1, $maxNumberOfMeterReadings))
-                            ->for($meter)
-                            ->create();
+                    ->each(function ($meter) {
+                        $this->createHourlyReadingsForYear($meter);
                     });
             });
+    }
+
+    protected function createHourlyReadingsForYear($meter): void
+    {
+        $startOfYear = now()->startOfYear();
+        $now = now();
+        $readings = [];
+
+        while ($startOfYear->lessThanOrEqualTo($now)) {
+            $readings[] = [
+                'meter_id' => $meter->id,
+                'value' => rand(0, 100),
+                'reading_date' => $startOfYear->copy(),
+                'source' => 'Generated',
+                'created_at' => now(),
+                'updated_at' => now()
+            ];
+
+            $startOfYear->addHour();
+        }
+
+        $batchSize = 100;
+        $chunks = array_chunk($readings, $batchSize);
+
+        foreach ($chunks as $chunk) {
+            MeterReading::query()->insert($chunk);
+        }
     }
 }
