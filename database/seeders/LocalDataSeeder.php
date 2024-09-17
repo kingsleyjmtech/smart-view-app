@@ -24,28 +24,30 @@ class LocalDataSeeder extends Seeder
                 'status' => 'Active',
             ])
             ->each(function ($user) use ($utilityTypeIds) {
-                $maxNumberOfMeters = 10;
+                $this->createCustomerAndMeters($user, $utilityTypeIds);
+            });
+    }
 
-                $customer = Customer::factory()
-                    ->for($user)
-                    ->create([
-                        'status' => 'Active',
-                    ]);
+    protected function createCustomerAndMeters(User $user, $utilityTypeIds): void
+    {
+        $maxNumberOfMeters = 10;
+        $customer = Customer::factory()
+            ->for($user)
+            ->create(['status' => 'Active']);
 
-                Meter::factory()
-                    ->count(rand(1, $maxNumberOfMeters))
-                    ->for($customer)
-                    ->create([
-                        'utility_type_id' => $utilityTypeIds->random(),
-                        'tenant_id' => Tenant::factory()->create([
-                            'customer_id' => $customer->id,
-                            'user_id' => [null, User::factory()->create()->id][rand(0, 1)],
-                        ])->id,
-                        'status' => 'Active',
-                    ])
-                    ->each(function ($meter) {
-                        $this->createHourlyReadingsForYear($meter);
-                    });
+        Meter::factory()
+            ->count(rand(1, $maxNumberOfMeters))
+            ->for($customer)
+            ->create([
+                'utility_type_id' => $utilityTypeIds->random(),
+                'tenant_id' => Tenant::factory()->create([
+                    'customer_id' => $customer->id,
+                    'user_id' => [null, User::factory()->create()->id][rand(0, 1)],
+                ])->id,
+                'status' => 'Active',
+            ])
+            ->each(function ($meter) {
+                $this->createHourlyReadingsForYear($meter);
             });
     }
 
