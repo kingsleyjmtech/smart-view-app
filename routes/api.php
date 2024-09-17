@@ -14,6 +14,9 @@ use App\Http\Controllers\Api\V1\Admin\UtilityType\UtilityTypeApiController;
 use App\Http\Controllers\Api\V1\Auth\AuthApiController;
 use App\Http\Controllers\Api\V1\Auth\EmailVerificationController;
 use App\Http\Controllers\Api\V1\Auth\ForgotPasswordController;
+use App\Http\Controllers\Api\V1\Customer\Customer\CustomerCustomerApiController;
+use App\Http\Controllers\Api\V1\Customer\Meter\MeterCustomerApiController;
+use App\Http\Controllers\Api\V1\Customer\Tenant\TenantCustomerApiController;
 use App\Http\Controllers\Api\V1\User\Meter\MeterUserApiController;
 use App\Http\Controllers\Api\V1\User\Shared\TimezoneController;
 use App\Http\Controllers\Api\V1\User\Tenant\TenantUserApiController;
@@ -78,6 +81,18 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum',
 
     // My Meter Readings
     Route::get('/my-meters/{meter}/meter-readings', [MeterUserApiController::class, 'getMeterReadings']);
+
+    // Customers
+    Route::get('/customers', [CustomerCustomerApiController::class, 'index']);
+
+    // Tenants
+    Route::get('/tenants', [TenantCustomerApiController::class, 'index']);
+
+    // Meters
+    Route::get('/meters', [MeterCustomerApiController::class, 'index']);
+
+    // Meter Readings
+    Route::get('/meters/{meter}/meter-readings', [MeterCustomerApiController::class, 'getMeterReadings']);
 });
 
 Route::group(['prefix' => 'v1/admin', 'as' => 'api.admin.', 'middleware' => ['auth:sanctum', 'check_status', 'set_user_timezone']], function () {
@@ -113,5 +128,4 @@ Route::group(['prefix' => 'v1/admin', 'as' => 'api.admin.', 'middleware' => ['au
 
     // Utility Types
     Route::apiResource('utility-types', UtilityTypeApiController::class);
-
 });

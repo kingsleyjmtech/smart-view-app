@@ -1,0 +1,3454 @@
+{
+	"info": {
+		"_postman_id": "f264f8c3-258d-4c5b-aef5-628bf8dea314",
+		"name": "Smart View App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16796082"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test('Has Token', function(){\r",
+									"    pm.expect(jsonData).to.have.property('token');\r",
+									"    pm.collectionVariables.set('$token', jsonData.token);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{$randomFullName}}\",\n    \"email\": \"{{$randomExampleEmail}}\",\n    \"timezone\": \"Africa/Johannesburg\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test('Has Token', function(){\r",
+									"    pm.expect(jsonData).to.have.property('token');\r",
+									"    pm.collectionVariables.set('$token', jsonData.token);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@user.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test('Has Token', function(){\r",
+									"    pm.expect(jsonData).to.have.property('token');\r",
+									"    pm.collectionVariables.set('$token', jsonData.token);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@admin.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test('Has Token', function(){\r",
+									"    pm.expect(jsonData).to.have.property('token');\r",
+									"    pm.collectionVariables.set('$token', jsonData.token);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"customer@customer.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test('Has Token', function(){\r",
+									"    pm.expect(jsonData).to.have.property('token');\r",
+									"    pm.collectionVariables.set('$token', jsonData.token);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@user.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout Other Sessions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/logout-other-sessions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"logout-other-sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout Session by ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/logout-session/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"logout-session",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Email Resend",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/verify/email/resend",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"verify",
+								"email",
+								"resend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/verify/email/:id/:hash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"verify",
+								"email",
+								":id",
+								":hash"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								},
+								{
+									"key": "hash",
+									"value": "hash"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"current_password\": \"password\",\n    \"new_password\": \"password\",\n    \"new_confirm_password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/change-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@user.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/forgot-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@user.com\",\n    \"token\": \"token\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/reset-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/my-details",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"my-details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update My Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test('Has Token', function(){\r",
+									"    pm.expect(jsonData).to.have.property('token');\r",
+									"    pm.collectionVariables.set('$token', jsonData.token);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"name\",\n    \"email\": \"email\",\n    \"timezone\": \"timezone\",\n    \"password\": \"password\",\n    \"roles\": [\n        1\n    ],\n    \"status\": \"status\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/my-details",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"my-details"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Users",
+							"item": [
+								{
+									"name": "Get Users",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/users",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get User by ID",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/users/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create User",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"name\",\n    \"email\": \"email\",\n    \"timezone\": \"timezone\",\n    \"password\": \"password\",\n    \"roles\": [\n        1\n    ],\n    \"status\": \"status\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/users",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update User",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"name\",\n    \"email\": \"email\",\n    \"timezone\": \"timezone\",\n    \"password\": \"password\",\n    \"roles\": [\n        1\n    ],\n    \"status\": \"status\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/users/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete User",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/users/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Roles",
+							"item": [
+								{
+									"name": "Get Roles",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/roles",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"roles"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Role by ID",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/roles/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"roles",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Role",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"name\",\n    \"permissions\": [\n        1\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/roles",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"roles"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Role",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"name\",\n    \"permissions\": [\n        1\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/roles/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"roles",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Role",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/roles/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"roles",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Permissions",
+							"item": [
+								{
+									"name": "Get Permissions",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/permissions",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"permissions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Permission by ID",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/permissions/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"permissions",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Permission",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"name\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/permissions",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"permissions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Permission",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"name\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/permissions/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"permissions",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Permission",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/permissions/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"permissions",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Meters",
+					"item": [
+						{
+							"name": "Customers",
+							"item": [
+								{
+									"name": "Get Customers",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/customers",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"customers"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Customer by ID",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/customers/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"customers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Customer",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"user_id\": 1,\n    \"name\": \"name\",\n    \"status\": \"status\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/customers",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"customers"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Customer",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"user_id\": 1,\n    \"name\": \"name\",\n    \"status\": \"status\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/customers/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"customers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Customer",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/customers/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"customers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Tenants",
+							"item": [
+								{
+									"name": "Get Tenants",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/tenants",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tenants"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Tenant by ID",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/tenants/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tenants",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Tenant",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"customer_id\": 1,\n    \"user_id\": 1,\n    \"status\": \"status\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/tenants",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tenants"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Tenant",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"customer_id\": 1,\n    \"user_id\": 1,\n    \"status\": \"status\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/tenants/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tenants",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Tenant",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/tenants/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tenants",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Meters",
+							"item": [
+								{
+									"name": "Get Meters",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/meters",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meters"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Meter by ID",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/meters/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meters",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Meter",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"tenant_id\": 1,\n    \"customer_id\": 1,\n    \"code\": \"code\",\n    \"location\": \"location\",\n    \"installation_date\": \"installation_date\",\n    \"status\": \"status\",\n    \"utility_type_id\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/meters",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meters"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Meter",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"tenant_id\": 1,\n    \"customer_id\": 1,\n    \"code\": \"code\",\n    \"location\": \"location\",\n    \"installation_date\": \"installation_date\",\n    \"status\": \"status\",\n    \"utility_type_id\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/meters/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meters",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Meter",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/meters/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meters",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Meter Readings",
+							"item": [
+								{
+									"name": "Get Meter Readings",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/meter-readings",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meter-readings"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Meter Reading by ID",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/meter-readings/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meter-readings",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Meter Reading",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"meter_id\": 1,\n    \"reading_date\": \"reading_date\",\n    \"value\": 0,\n    \"source\": \"source\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/meter-readings",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meter-readings"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Meter Reading",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"meter_id\": 1,\n    \"reading_date\": \"reading_date\",\n    \"value\": 0,\n    \"source\": \"source\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/meter-readings/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meter-readings",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Meter Reading",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/meter-readings/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meter-readings",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Tariffs",
+							"item": [
+								{
+									"name": "Get Tariffs",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/tariffs",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tariffs"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Tariff by ID",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/tariffs/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tariffs",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Tariff",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"rate\": 0,\n    \"description\": \"description\",\n    \"start_date\": \"start_date\",\n    \"end_date\": \"end_date\",\n    \"name\": \"name\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/tariffs",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tariffs"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Tariff",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"rate\": 0,\n    \"description\": \"description\",\n    \"start_date\": \"start_date\",\n    \"end_date\": \"end_date\",\n    \"name\": \"name\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/tariffs/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tariffs",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Tariff",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/tariffs/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tariffs",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Meter Tariffs",
+							"item": [
+								{
+									"name": "Get Meter Tariffs",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/meter-tariffs",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meter-tariffs"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Meter Tariff by ID",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/meter-tariffs/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meter-tariffs",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Meter Tariff",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"meter_id\": 1,\n    \"tariff_id\": 1,\n    \"effective_from\": \"effective_from\",\n    \"effective_to\": \"effective_to\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/meter-tariffs",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meter-tariffs"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Meter Tariff",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"meter_id\": 1,\n    \"tariff_id\": 1,\n    \"effective_from\": \"effective_from\",\n    \"effective_to\": \"effective_to\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/meter-tariffs/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meter-tariffs",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Meter Tariff",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/meter-tariffs/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"meter-tariffs",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Utility Types",
+							"item": [
+								{
+									"name": "Get Utility Types",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/utility-types",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"utility-types"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Utility Type by ID",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/utility-types/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"utility-types",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Utility Type",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"name\",\n    \"description\": \"description\",\n    \"status\": \"status\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/utility-types",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"utility-types"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Utility Type",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"name\",\n    \"description\": \"description\",\n    \"status\": \"status\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/utility-types/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"utility-types",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Utility Type",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/utility-types/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"utility-types",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Consumptions",
+							"item": [
+								{
+									"name": "Get Consumptions",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/consumptions",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"consumptions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Consumption by ID",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/consumptions/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"consumptions",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Consumption",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"meter_id\": 1,\n    \"aggregation_period\": \"aggregation_period\",\n    \"value\": 0,\n    \"date\": \"date\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/consumptions",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"consumptions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Consumption",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"meter_id\": 1,\n    \"aggregation_period\": \"aggregation_period\",\n    \"value\": 0,\n    \"date\": \"date\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/consumptions/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"consumptions",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Consumption",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "{{apiKeyName}}",
+												"value": "{{apiKeyValue}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/admin/consumptions/:id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"consumptions",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Customers",
+					"item": [
+						{
+							"name": "Get Customers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "{{apiKeyName}}",
+										"value": "{{apiKeyValue}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/customers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tenants",
+					"item": [
+						{
+							"name": "Get Tenants",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "{{apiKeyName}}",
+										"value": "{{apiKeyValue}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/tenants",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"tenants"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Meters",
+					"item": [
+						{
+							"name": "Get Meters",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "{{apiKeyName}}",
+										"value": "{{apiKeyValue}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/meters",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"meters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Meter Readings For A Meter",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "{{apiKeyName}}",
+										"value": "{{apiKeyValue}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/meters/:id/meter-readings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"meters",
+										":id",
+										"meter-readings"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Tenants",
+					"item": [
+						{
+							"name": "Get My Tenants",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "{{apiKeyName}}",
+										"value": "{{apiKeyValue}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/my-tenants",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"my-tenants"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Meters",
+					"item": [
+						{
+							"name": "Get My Meters",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "{{apiKeyName}}",
+										"value": "{{apiKeyValue}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/my-meters",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"my-meters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get My Meter Readings For A Meter",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "{{apiKeyName}}",
+										"value": "{{apiKeyValue}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/my-meters/:id/meter-readings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"my-meters",
+										":id",
+										"meter-readings"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Timezones",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/timezones",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"timezones"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Ping",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "{{apiKeyName}}",
+						"value": "{{apiKeyValue}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/ping",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "{{apiKeyName}}",
+						"value": "{{apiKeyValue}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/ping",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{$token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://127.0.0.1:8000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "apiKeyName",
+			"value": "API_KEY",
+			"type": "string"
+		},
+		{
+			"key": "apiKeyValue",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "$token",
+			"value": ""
+		}
+	]
+}
