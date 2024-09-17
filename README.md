@@ -49,6 +49,16 @@ This is an Smart View App written in Laravel 11.
    php artisan storage:link
    ```
 
+9. Run the queue worker optionally (open a new terminal):
+   ```sh
+   php artisan queue:work
+   ```
+
+10. Run the schedule worker optionally (open a new terminal):
+   ```sh
+   php artisan schedule:work
+   ```
+
 ## Default credentials for Admin user
 
 -   **Username:** admin@admin.com
@@ -60,3 +70,9 @@ This is an Smart View App written in Laravel 11.
    ```sh
    php artisan test
    ```
+
+## Postman Collection Smart View App.postman_collection.json in root dir
+
+## Database Schema
+![Example Image](smart_view_app.png)
+
