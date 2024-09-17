@@ -17,6 +17,7 @@ class PermissionRoleSeeder extends Seeder
         $adminRole->permissions()
             ->sync($adminPermissions->pluck('id'));
 
+        /*
         if (config('app.env') === 'local') {
             $userPermissions = $adminPermissions->filter(function ($permission) {
                 return ! str_starts_with($permission->name, 'user_') &&
@@ -30,5 +31,6 @@ class PermissionRoleSeeder extends Seeder
             $userRole->permissions()
                 ->sync($userPermissions->pluck('id'));
         }
+        */
     }
 }
